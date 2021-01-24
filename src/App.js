@@ -1,25 +1,25 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import CodePage from './pages/code-page/index';
+import Navbar from './components/navbar/index';
+import HomePage from './pages/home-page/index';
+import PostPage from './pages/post-page/index';
 import './App.css';
 
-function App() {
-  return (
+const App = () => (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Navbar />
+        <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/post" component={PostPage} />
+            <Switch>
+                <Route path={`/post/:id`} component={CodePage} />
+            </Switch>
+        </Switch>
     </div>
-  );
-}
+);
+
+
 
 export default App;
+
