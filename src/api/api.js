@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export default axios.create({
-  baseURL: process.env.API_LINK || 'http://localhost:3000/'
+  baseURL: 'https://share-code-server.glitch.me/'
 });
