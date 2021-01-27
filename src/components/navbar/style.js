@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NavLink } from "react-router-dom";
 
 export const NavbarDiv = styled.div`
     display: flex;
@@ -15,25 +16,34 @@ export const NavbarDiv = styled.div`
     border-bottom: solid 1px lightgrey;
 `;
 
+export const NavbarUl = styled.ul`
+    position: relative;
+    top: -10px;
+    right: 150px;
+`;
+
+export const NavbarA = styled(NavLink)`
+    font-size: 16px;
+    color: grey;
+    text-decoration: none;
+    :hover {
+        color: #a8a8a8;
+        transition: all 0.3s ease 0.1s;
+    }
+`;
+
+export const NavbarLi = styled.li`
+    display: inline-block;
+    padding: 10px 30px;
+    transition: all 0.3s ease 0.1s;
+`;
+
 export const NavbarLogo = styled.h1`
     cursor: pointer;
     position: relative; 
     top: -10px;
 `;
 
-export const NavbarButton = styled.button`
-    font-family: "Montserrat", sans-serif;
-    font-size: 12px;
-    background-color: blue;
-    color: white;
-    cursor: pointer;
-    position: relative;
-    top: -6px;
-    right: 20px;
-    padding: 10px;
-    border: none;
-    outline: none;
-    &:hover {
-        background-color: #0000e8;
-    }
+export const NotAvailable = styled(NavbarA)`
+    cursor: not-allowed;
 `;

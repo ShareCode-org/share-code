@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavbarDiv, NavbarLogo, NavbarButton } from './style';
+import { NavbarDiv, NavbarLogo, NavbarUl, NavbarLi, NavbarA, NotAvailable } from './style';
 
 const Navbar = () => {
     return (
@@ -10,7 +10,38 @@ const Navbar = () => {
                 </NavbarLogo>
             </div>
             <div>
-                <NavbarButton onClick={() => window.location.href = '/post'}>Post</NavbarButton>
+                <NavbarUl>
+                    <NavbarLi>
+                        <NavbarA
+                            to="/"
+                            exact
+                            activeStyle={{
+                                borderBottom: "#a8a8a8"
+                            }}>
+                            Home
+                        </NavbarA>
+                    </NavbarLi>
+                    <NavbarLi>
+                        <NavbarA
+                            to="/post"
+                            activeStyle={{
+                                borderBottom: "#a8a8a8"
+                            }}>
+                            Post
+                        </NavbarA>
+                    </NavbarLi>
+                    <NavbarLi>
+                        <NotAvailable
+                            to=""
+                            activeStyle={{
+                                color: "#a8a8a8"
+                            }}
+                            onClick={() => alert('Not Available')}
+                        >
+                            Sign in
+                        </NotAvailable>
+                    </NavbarLi>
+                </NavbarUl>
             </div>
         </NavbarDiv>
     )
