@@ -5,6 +5,9 @@ export const ContactPageDivContainer = styled.div`
     position: relative;
     top: 80px;
     text-align: center;
+    @media (max-width: 768px) {
+      top: 180px;
+    } 
 `;
 
 export const PostInput = styled.input`
