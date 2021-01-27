@@ -33,7 +33,7 @@ export const PostMessage = styled.textarea`
         color: #7a7aff;
     }
     @media (max-width: 768px) {
-        width: 100%;
+        width: 90%;
     }
 `;
 
