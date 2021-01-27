@@ -32,6 +32,9 @@ export const PostMessage = styled.textarea`
     ::placeholder {
         color: #7a7aff;
     }
+    @media (max-width: 768px) {
+        width: 80%;
+    }
 `;
 
 export const PostCaptcha = styled(ReCAPTCHA)`
