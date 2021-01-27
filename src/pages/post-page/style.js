@@ -24,7 +24,7 @@ export const PostMessage = styled.textarea`
     border: solid blue 1px;
     color: #7a7aff;
     outline: none;
-    width: 316px; 
+    width: 20%;
     height: 200px;
     padding-left: 4px;
     margin: 5px;
