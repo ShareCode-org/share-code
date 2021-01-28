@@ -5,6 +5,10 @@ export const CodePageDiv = styled.div`
     position: absolute;
     top: 25%;
     left: 25%;
+    @media (max-width: 768px) {
+        margin: 10px;
+        left: 0;
+    } 
 `;
 
 export const CodePageDetails = styled.div`
@@ -27,4 +31,7 @@ export const CodePageCode = styled(SyntaxHighlighter)`
     width: 900px;
     height: auto;
     margin-bottom: 15px;
+    @media (max-width: 768px) {
+        width: auto;
+    } 
 `;
