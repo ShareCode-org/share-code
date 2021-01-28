@@ -13,6 +13,9 @@ const HomePage = () => {
         position: absolute;
         top: 50%;
         left: 50%;
+        @media (max-width: 768px) {
+            left: 42%;
+        } 
     `;
 
     React.useEffect(() => {

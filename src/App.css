@@ -23,3 +23,7 @@ button {
 button:hover {
   background-color: #0000e8;
 }
+
+.not-btn:hover {
+  background-color: transparent;
+}

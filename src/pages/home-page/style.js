@@ -10,7 +10,9 @@ export const HomePostsDiv = styled.div`
   top: 50px;
   margin: 0px auto;
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     top: 120px;
   } 
 `;
