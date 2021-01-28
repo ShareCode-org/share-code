@@ -15,7 +15,7 @@ export const CodeCardDiv = styled.div`
         transform: scale(1.01);
     }
     @media (max-width: 768px) {
-        width: 350px;
+        width: 300px;
     } 
 `;
 

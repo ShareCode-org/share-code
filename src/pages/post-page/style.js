@@ -20,6 +20,9 @@ export const PostInput = styled.input`
     ::placeholder {
         color: #7a7aff;
     }
+    @media (max-width: 768px) {
+        width: 80%;
+    }
 `;
 
 export const PostMessage = styled.textarea`
@@ -36,7 +39,7 @@ export const PostMessage = styled.textarea`
         color: #7a7aff;
     }
     @media (max-width: 768px) {
-        width: 90%;
+        width: 80%;
     }
 `;
 
