@@ -35,7 +35,7 @@ const CodePage = () => {
                 setTimeout(() => {
                     setPost(res.data);
                     setLoading(!loading);
-                }, 1500)
+                }, 500)
             })
     }, []);
 
