@@ -1,6 +1,6 @@
 import React from 'react';
 import API from '../../api/api';
-import { ContactPageDivContainer, PostInput, PostMessage, PostCaptcha, PostSpan, PostSentAlert } from './style';
+import { ContactPageDivContainer, PostCaptcha, PostSpan, PostSentAlert } from './style';
 
 const PostPage = () => {
     const [title, setTitle] = React.useState('');
@@ -57,21 +57,21 @@ const PostPage = () => {
             ) : (
                     <>
                         <div>
-                            <PostInput
+                            <input
                                 placeholder="Title"
                                 value={title}
                                 onChange={e => setTitle(e.target.value)}
                             />
                         </div>
                         <div>
-                            <PostInput
+                            <input
                                 placeholder="Description"
                                 value={description}
                                 onChange={e => setDescription(e.target.value)}
                             />
                         </div>
                         <div>
-                            <PostMessage
+                            <textarea
                                 placeholder="Code"
                                 value={code}
                                 onChange={e => setCode(e.target.value)}

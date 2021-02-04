@@ -1,7 +1,10 @@
 import React from 'react';
-import { NavbarDiv, NavbarLogo, NavbarUl, NavbarLi, NavbarA, NotAvailable } from './style';
+import { UserContext } from '../../context/userContext';
+import { NavbarDiv, NavbarLogo, NavbarUl, NavbarLi, NavbarA, LogoutA, NotAvailable } from './style';
 
 const Navbar = () => {
+    const { isLogging, setIsLogging } = React.useContext(UserContext);
+
     return (
         <NavbarDiv>
             <div onClick={() => window.location.href = '/'}>
@@ -16,31 +19,59 @@ const Navbar = () => {
                             to="/"
                             exact
                             activeStyle={{
-                                borderBottom: "#a8a8a8"
+                                color: "#a8a8a8"
                             }}>
                             Home
                         </NavbarA>
                     </NavbarLi>
-                    <NavbarLi>
-                        <NavbarA
-                            to="/post"
-                            activeStyle={{
-                                borderBottom: "#a8a8a8"
-                            }}>
-                            Post
-                        </NavbarA>
-                    </NavbarLi>
-                    <NavbarLi>
-                        <NotAvailable
-                            to=""
-                            activeStyle={{
-                                color: "#a8a8a8"
-                            }}
-                            onClick={() => alert('Not Available')}
-                        >
-                            Sign in
-                        </NotAvailable>
-                    </NavbarLi>
+
+
+                    {
+                        isLogging ? (
+                            <NavbarLi>
+                                <NavbarA
+                                    to="/post"
+                                    activeStyle={{
+                                        color: "#a8a8a8"
+                                    }}>
+                                    Post
+                                    </NavbarA>
+                            </NavbarLi>
+                        ) : (
+                                <NavbarLi>
+                                    <NotAvailable>
+                                        Post
+                                    </NotAvailable>
+                                </NavbarLi>
+                            )
+                    }
+
+                    {
+                        isLogging ? (
+                            <NavbarLi>
+                                <LogoutA
+                                    onClick={() => {
+                                        setIsLogging(false);
+                                        localStorage.setItem('token', '');
+                                        localStorage.setItem('isLogging', false);
+                                    }}
+                                >
+                                    Logout
+                             </LogoutA>
+                            </NavbarLi>
+                        ) : (
+                                <NavbarLi>
+                                    <NavbarA
+                                        to="/sign-up-and-sign-in"
+                                        activeStyle={{
+                                            color: "#a8a8a8"
+                                        }}
+                                    >
+                                        Sign in
+                             </NavbarA>
+                                </NavbarLi>
+                            )
+                    }
                 </NavbarUl>
             </div>
         </NavbarDiv>

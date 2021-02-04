@@ -1,5 +1,6 @@
 import React from "react";
-import { StyledMenu, StyledBurger } from "./style"
+import { UserContext } from '../../context/userContext';
+import { StyledMenu, StyledBurger } from "./style";
 
 export const Burger = ({ open, setOpen }) => {
   return (
@@ -12,17 +13,45 @@ export const Burger = ({ open, setOpen }) => {
 };
 
 const ResponsiveNavbar = ({ open }) => {
+  const { isLogging, setIsLogging } = React.useContext(UserContext);
+
   return (
     <StyledMenu open={open}>
       <a href="/">
         Home
         </a>
-      <a href="/post">
-        Post
+      {
+        isLogging ? (
+          <a href="/post">
+            Post
           </a>
-      <a onClick={() => alert('Not Available')}>
-        Sign in
+        ) : (
+            <a onClick={() => alert('Not Available')}>
+              Post
+            </a>
+          )
+      }
+
+      {
+        isLogging ? (
+          <a
+            onClick={() => {
+              setIsLogging(false);
+              localStorage.setItem('token', '');
+              localStorage.setItem('isLogging', false);
+            }}>
+            Logout
           </a>
+        ) : (
+            <a href="/sign-up-and-sign-in">
+              Sign in
+            </a>
+          )
+      }
+
+
+
+
     </StyledMenu>
   )
 };

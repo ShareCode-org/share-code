@@ -10,39 +10,6 @@ export const ContactPageDivContainer = styled.div`
     } 
 `;
 
-export const PostInput = styled.input`
-    font-size: 25px;
-    border: solid blue 1px;
-    color: #7a7aff;
-    outline: none;
-    padding-left: 4px;
-    margin: 5px;
-    ::placeholder {
-        color: #7a7aff;
-    }
-    @media (max-width: 768px) {
-        width: 80%;
-    }
-`;
-
-export const PostMessage = styled.textarea`
-    font-size: 20px;
-    border: solid blue 1px;
-    color: #7a7aff;
-    outline: none;
-    width: 20%;
-    height: 200px;
-    padding-left: 4px;
-    margin: 5px;
-    overflow: hidden;
-    ::placeholder {
-        color: #7a7aff;
-    }
-    @media (max-width: 768px) {
-        width: 80%;
-    }
-`;
-
 export const PostCaptcha = styled(ReCAPTCHA)`
     display: flex;
     justify-content: center;

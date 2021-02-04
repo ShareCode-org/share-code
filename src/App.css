@@ -14,6 +14,7 @@ button {
   background-color: blue;
   transition: all 0.4s ease-in-out;
   color: white;
+  margin: 5px;
   padding: 10px;
   cursor: pointer;
   border: none;
@@ -26,4 +27,41 @@ button:hover {
 
 .not-btn:hover {
   background-color: transparent;
+}
+
+input {
+  font-size: 25px;
+  border: solid blue 1px;
+  border-radius: 4px;
+  color: #7a7aff;
+  outline: none;
+  padding-left: 4px;
+  margin: 5px;
+}
+
+input::placeholder {
+  color: #7a7aff;
+}
+
+textarea {
+  font-size: 20px;
+  border: solid blue 1px;
+  border-radius: 4px;
+  color: #7a7aff;
+  outline: none;
+  width: 20%;
+  height: 200px;
+  padding-left: 4px;
+  margin: 5px;
+  overflow: hidden;
+}
+
+textarea::placeholder {
+  color: #7a7aff;
+}
+
+@media (max-width: 768px) {
+  input, textarea {
+    width: 80%;
+  }
 }

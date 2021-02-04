@@ -9,6 +9,7 @@ const HomePage = () => {
     const [posts, setPosts] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
 
+
     const override = css`
         position: absolute;
         top: 50%;

@@ -1,5 +1,16 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+const linkStyle = css`
+    font-size: 16px;
+    color: grey;
+    text-decoration: none;
+    :hover {
+        color: #a8a8a8;
+        transition: all 0.3s ease 0.1s;
+    }
+`
 
 export const NavbarDiv = styled.div`
     display: flex;
@@ -16,7 +27,7 @@ export const NavbarDiv = styled.div`
     border-bottom: solid 1px lightgrey;
     @media (max-width: 768px) {
         display: none;
-    }F
+    }
 `;
 
 export const NavbarUl = styled.ul`
@@ -25,15 +36,9 @@ export const NavbarUl = styled.ul`
     right: 150px;
 `;
 
-export const NavbarA = styled(NavLink)`
-    font-size: 16px;
-    color: grey;
-    text-decoration: none;
-    :hover {
-        color: #a8a8a8;
-        transition: all 0.3s ease 0.1s;
-    }
-`;
+export const NavbarA = styled(NavLink)`${linkStyle}`;
+
+export const LogoutA = styled(Link)`${linkStyle}`;
 
 export const NavbarLi = styled.li`
     display: inline-block;
@@ -47,6 +52,7 @@ export const NavbarLogo = styled.h1`
     top: -10px;
 `;
 
-export const NotAvailable = styled(NavbarA)`
+export const NotAvailable = styled(Link)`
+    ${linkStyle}
     cursor: not-allowed;
 `;
