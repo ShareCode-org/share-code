@@ -17,7 +17,8 @@ const PostPage = () => {
     const postData = {
         title: title,
         description: description,
-        code: code
+        code: code,
+        token: localStorage.getItem('token')
     };
 
     const handleSubmit = () => {

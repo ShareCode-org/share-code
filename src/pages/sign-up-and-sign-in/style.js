@@ -11,7 +11,7 @@ export const SignInDivContainer = styled.div`
   @media (max-width: 768px) {
     width: 100%;
     top: 100px;
-    flex-direction: column;
+      flex-direction: column;
   }
 `;
 
