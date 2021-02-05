@@ -25,23 +25,29 @@ const HomePage = () => {
                 setTimeout(() => {
                     setPosts(res.data);
                     setLoading(!loading);
+                    console.log(posts);
                 }, 500)
             })
     }, []);
 
     return (
         <div>
-            {posts.length ? (
-                <HomePostsDiv>
-                    {posts.map((post, index) => (
-                        <CodeCard
-                            key={index}
-                            title={post.title}
-                            description={post.description}
-                            id={post._id}
-                        />
-                    ))}
-                </HomePostsDiv>
+            {!loading ? (
+                posts.length ? (
+                    <HomePostsDiv>
+                        {posts.map((post, index) => (
+                            <CodeCard
+                                key={index}
+                                title={post.title}
+                                description={post.description}
+                                id={post._id}
+                            />
+                        ))}
+                    </HomePostsDiv>
+
+                ) : (
+                        <HomeMessage>There is no posts.</HomeMessage>
+                    )
             ) : (
                     <div>
                         <BeatLoader

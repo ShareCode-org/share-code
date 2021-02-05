@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Form } from "formik";
 
 export const SignUpDiv = styled.div`
   @media (max-width: 768px) {
@@ -6,7 +7,7 @@ export const SignUpDiv = styled.div`
   }
 `;
 
-export const FormDiv = styled.div`
+export const FormDiv = styled(Form)`
   position: relative;
   top: 20px;
 `;
@@ -21,3 +22,7 @@ export const Span = styled.span`
   margin: 10px 0;
 `;
 
+export const ErrorSpan = styled.span`
+    margin: 4px;
+    color: red;
+`;

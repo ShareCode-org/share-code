@@ -1,55 +1,104 @@
 import React from 'react';
 import API from '../../api/api';
-// import jwt from 'jwt';
+import { Formik, Field } from "formik";
+import * as Yup from 'yup';
 import { UserContext } from '../../context/userContext';
 import {
     SignInDiv,
     FormDiv,
     Title,
-    Span
+    Span,
+    ErrorSpan
 } from './style';
 
-const SignIn = () => {
-    const { isLogging, setIsLogging } = React.useContext(UserContext);
-    const [signin, setSignin] = React.useState({
-        username: '',
-        password: ''
-    })
+const SigninSchema = Yup.object().shape({
+    username: Yup.string()
+        .min(2, 'Too Short!')
+        .max(50, 'Too Long!')
+        .required('Required'),
 
-    const SignInRequest = () => {
-        API.post(`/user/login`, signin)
-            .then(res => {
-                if (res.data.message === "Auth successful") {
-                    window.location.href = '/';
-                    setIsLogging(true);
-                    localStorage.setItem('token', res.data.token);
-                    localStorage.setItem('isLogging', true);
-                }
-            })
-            .catch(err => err);
-    };
+    password: Yup.string()
+        .min(2, 'Too Short!')
+        .max(50, 'Too Long!')
+        .required('Required'),
+});
+
+const SignIn = () => {
+    const { setIsLogging } = React.useContext(UserContext);
 
     return (
+        // const [signin, setSignin] = React.useState({
+        //     username: '',
+        //     password: ''
+        // })
+
+        // const SignInRequest = () => {
+        //     API.post(`/user/login`, signin)
+        //         .then(res => {
+        //             if (res.data.message === "Auth successful") {
+        //                 window.location.href = '/';
+        //                 setIsLogging(true);
+        //                 localStorage.setItem('token', res.data.token);
+        //                 localStorage.setItem('isLogging', true);
+        //             }
+        //         })
+        //         .catch(err => err);
+        // };
+
+
         <SignInDiv>
             <Title>I already have an account</Title>
             <Span>Sign in with your email and password</Span>
-            <FormDiv>
-                <div>
-                    <input
-                        type='username'
-                        placeholder='Username'
-                        onChange={e => setSignin({ ...signin, username: e.target.value })}
-                    />
-                </div>
-                <div>
-                    <input
-                        type='password'
-                        placeholder='Password'
-                        onChange={e => setSignin({ ...signin, password: e.target.value })}
-                    />
-                </div>
-                <button onClick={SignInRequest}>Sign in</button>
-            </FormDiv>
+            <Formik
+                initialValues={{
+                    username: '',
+                    password: ''
+                }}
+                validationSchema={SigninSchema}
+                onSubmit={(values, { resetForm }) => {
+                    API.post(`/user/login`, values)
+                        .then(res => {
+                            if (res.data.message === "Auth successful") {
+                                window.location.href = '/';
+                                setIsLogging(true);
+                                localStorage.setItem('token', res.data.token);
+                                localStorage.setItem('isLogging', true);
+                            }
+                        })
+                        .catch(err => err);
+                    resetForm();
+
+                }}
+            >
+                {({ errors, touched }) => (
+
+                    <FormDiv>
+                        <div>
+                            <Field
+                                name='username'
+                                type='username'
+                                placeholder='Username'
+                            />
+                        </div>
+                        {errors.username && touched.username ? (
+                            <ErrorSpan>{errors.username}</ErrorSpan>
+                        ) : null}
+                        <div>
+                            <Field
+                                name='password'
+                                type='password'
+                                placeholder='Password'
+                            />
+                        </div>
+                        {errors.password && touched.password ? (
+                            <ErrorSpan>{errors.password}</ErrorSpan>
+                        ) : null}
+                        <div>
+                            <button type='submit'>Sign in</button>
+                        </div>
+                    </FormDiv>
+                )}
+            </Formik>
         </SignInDiv>
     )
 };
