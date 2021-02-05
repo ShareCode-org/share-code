@@ -16,7 +16,6 @@ const SigninSchema = Yup.object().shape({
         .min(2, 'Too Short!')
         .max(50, 'Too Long!')
         .required('Required'),
-
     password: Yup.string()
         .min(2, 'Too Short!')
         .max(50, 'Too Long!')
@@ -27,25 +26,6 @@ const SignIn = () => {
     const { setIsLogging } = React.useContext(UserContext);
 
     return (
-        // const [signin, setSignin] = React.useState({
-        //     username: '',
-        //     password: ''
-        // })
-
-        // const SignInRequest = () => {
-        //     API.post(`/user/login`, signin)
-        //         .then(res => {
-        //             if (res.data.message === "Auth successful") {
-        //                 window.location.href = '/';
-        //                 setIsLogging(true);
-        //                 localStorage.setItem('token', res.data.token);
-        //                 localStorage.setItem('isLogging', true);
-        //             }
-        //         })
-        //         .catch(err => err);
-        // };
-
-
         <SignInDiv>
             <Title>I already have an account</Title>
             <Span>Sign in with your email and password</Span>
@@ -56,6 +36,7 @@ const SignIn = () => {
                 }}
                 validationSchema={SigninSchema}
                 onSubmit={(values, { resetForm }) => {
+                    console.log(values)
                     API.post(`/user/login`, values)
                         .then(res => {
                             if (res.data.message === "Auth successful") {
@@ -63,11 +44,10 @@ const SignIn = () => {
                                 setIsLogging(true);
                                 localStorage.setItem('token', res.data.token);
                                 localStorage.setItem('isLogging', true);
+                                resetForm();
                             }
                         })
                         .catch(err => err);
-                    resetForm();
-
                 }}
             >
                 {({ errors, touched }) => (

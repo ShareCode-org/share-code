@@ -2,6 +2,8 @@ import React from 'react';
 import { Formik, Field } from "formik";
 import * as Yup from 'yup';
 import API from '../../api/api';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
     SignUpDiv,
     FormDiv,
@@ -9,6 +11,7 @@ import {
     Span,
     ErrorSpan
 } from './style';
+
 
 const SignupSchema = Yup.object().shape({
     username: Yup.string()
@@ -40,8 +43,9 @@ const SignUp = () => (
                     .then(res => {
                         // setErrorMessage('');
                         resetForm();
-                        alert('Account created!');
+                        toast.success('Account created!');
                     })
+                    .catch(() => toast.error('Account already exist!'))
             }}
         >
             {({ errors, touched }) => (
@@ -82,6 +86,7 @@ const SignUp = () => (
                 </FormDiv>
             )}
         </Formik>
+        <ToastContainer position="bottom-right" />
     </SignUpDiv>
 );
 
