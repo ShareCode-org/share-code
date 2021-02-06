@@ -36,7 +36,6 @@ const SignIn = () => {
                 }}
                 validationSchema={SigninSchema}
                 onSubmit={(values, { resetForm }) => {
-                    console.log(values)
                     API.post(`/user/login`, values)
                         .then(res => {
                             if (res.data.message === "Auth successful") {

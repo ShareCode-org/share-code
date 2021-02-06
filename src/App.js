@@ -22,13 +22,11 @@ const App = () => {
 
 
     useEffect(() => {
-        console.log(isTokenExpired);
-
         if (isTokenExpired) {
             localStorage.setItem('token', '');
             localStorage.setItem('isLogging', false);
             setIsLogging(false);
-        }
+        };
 
         const data = localStorage.getItem('isLogging');
         setIsLogging(JSON.parse(data));

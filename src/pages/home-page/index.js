@@ -25,7 +25,6 @@ const HomePage = () => {
                 setTimeout(() => {
                     setPosts(res.data);
                     setLoading(!loading);
-                    console.log(posts);
                 }, 500)
             })
     }, []);
