@@ -4,6 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { UserContext } from './context/userContext';
 import Navbar from './components/navbar/index';
 import ResponsiveNavbar, { Burger } from "./components/responsive-navbar/index";
+import { ToastContainer } from 'react-toastify';
 import HomePage from './pages/home-page/index';
 import PostPage from './pages/post-page/index';
 import CodePage from './pages/code-page/index';
@@ -41,6 +42,7 @@ const App = () => {
                     <Burger open={open} setOpen={setOpen} />
                     <ResponsiveNavbar open={open} setOpen={setOpen} />
                 </div>
+                <ToastContainer position="bottom-right" />
                 <Switch>
                     <Route exact path="/" component={HomePage} />
                     <Route exact path="/post">

@@ -1,6 +1,7 @@
 import React from 'react';
 import API from '../../api/api';
 import { decodeToken } from "react-jwt";
+import { toast } from 'react-toastify';
 import { ContactPageDivContainer, PostCaptcha, PostSpan, PostSentAlert } from './style';
 
 const PostPage = () => {
@@ -9,7 +10,6 @@ const PostPage = () => {
     const [code, setCode] = React.useState('');
     const tokenData = decodeToken(localStorage.getItem('token'));
     const [errorMessage, setErrorMessage] = React.useState('');
-    const [postSented, setPostSented] = React.useState(false);
     const [Value, setValue] = React.useState('');
 
     const onChange = (value) => {
@@ -45,7 +45,7 @@ const PostPage = () => {
                         setTitle('');
                         setDescription('');
                         setCode('');
-                        setPostSented(true);
+                        toast.success('Posted Successfully!');
                         window.location.href = '/';
                     })
             } else {
@@ -56,41 +56,38 @@ const PostPage = () => {
 
     return (
         <ContactPageDivContainer>
-            {postSented === true ? (
-                <PostSentAlert>✅ Posted</PostSentAlert>
-            ) : (
-                    <>
-                        <div>
-                            <input
-                                placeholder="Title"
-                                value={title}
-                                onChange={e => setTitle(e.target.value)}
-                            />
-                        </div>
-                        <div>
-                            <input
-                                placeholder="Description"
-                                value={description}
-                                onChange={e => setDescription(e.target.value)}
-                            />
-                        </div>
-                        <div>
-                            <textarea
-                                placeholder="Code"
-                                value={code}
-                                onChange={e => setCode(e.target.value)}
-                            />
-                        </div>
-                        <PostSpan>{errorMessage}</PostSpan>
-                        <PostCaptcha
-                            sitekey="6LdR6CYaAAAAAIA-PEqiHM8RqNEndngWJBKG0__u"
-                            onChange={onChange}
-                        />
-                        <div>
-                            <button onClick={handleSubmit}>Add</button>
-                        </div>
-                    </>
-                )}
+            <>
+                <div>
+                    <input
+                        placeholder="Title"
+                        value={title}
+                        onChange={e => setTitle(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <input
+                        placeholder="Description"
+                        value={description}
+                        onChange={e => setDescription(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <textarea
+                        placeholder="Code"
+                        value={code}
+                        onChange={e => setCode(e.target.value)}
+                    />
+                </div>
+                <PostSpan>{errorMessage}</PostSpan>
+                <PostCaptcha
+                    sitekey="6LdR6CYaAAAAAIA-PEqiHM8RqNEndngWJBKG0__u"
+                    onChange={onChange}
+                />
+                <div>
+                    <button onClick={handleSubmit}>Add</button>
+                </div>
+            </>
+
         </ContactPageDivContainer>
     )
 };

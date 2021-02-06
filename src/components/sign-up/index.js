@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Field } from "formik";
 import * as Yup from 'yup';
 import API from '../../api/api';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {
     SignUpDiv,
@@ -41,7 +41,6 @@ const SignUp = () => (
             onSubmit={(values, { resetForm }) => {
                 API.post(`/user/signup`, values)
                     .then(res => {
-                        // setErrorMessage('');
                         resetForm();
                         toast.success('Account created!');
                     })
@@ -86,7 +85,6 @@ const SignUp = () => (
                 </FormDiv>
             )}
         </Formik>
-        <ToastContainer position="bottom-right" />
     </SignUpDiv>
 );
 
