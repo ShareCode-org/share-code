@@ -35,3 +35,7 @@ export const CodePageCode = styled(SyntaxHighlighter)`
         width: auto;
     } 
 `;
+
+export const CodeSpan = styled.span`
+    color: darkgrey;
+`;

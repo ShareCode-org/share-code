@@ -9,7 +9,8 @@ import {
     CodePageDetails,
     CodePageTitle,
     CodePageDescription,
-    CodePageCode
+    CodePageCode,
+    CodeSpan
 } from './style';
 
 const CodePage = () => {
@@ -50,6 +51,7 @@ const CodePage = () => {
                     <CodePageCode style={dark}>
                         {codeString}
                     </CodePageCode>
+                    <CodeSpan>By {post.createdBy}</CodeSpan>
                 </CodePageDiv>
             ) : (
                     <BeatLoader

@@ -1,11 +1,13 @@
 import React from 'react';
 import API from '../../api/api';
+import { decodeToken } from "react-jwt";
 import { ContactPageDivContainer, PostCaptcha, PostSpan, PostSentAlert } from './style';
 
 const PostPage = () => {
     const [title, setTitle] = React.useState('');
     const [description, setDescription] = React.useState('');
     const [code, setCode] = React.useState('');
+    const tokenData = decodeToken(localStorage.getItem('token'));
     const [errorMessage, setErrorMessage] = React.useState('');
     const [postSented, setPostSented] = React.useState(false);
     const [Value, setValue] = React.useState('');
@@ -18,6 +20,7 @@ const PostPage = () => {
         title: title,
         description: description,
         code: code,
+        createdBy: tokenData.username,
         token: localStorage.getItem('token')
     };
 
