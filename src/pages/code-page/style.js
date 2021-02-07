@@ -17,6 +17,12 @@ export const CodePageDetails = styled.div`
     margin-bottom: 10px;
 `;
 
+export const CodePageBottom = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
+
 export const CodePageTitle = styled.h1`
     color: darkblue;
     margin-bottom: 10px;
@@ -38,4 +44,12 @@ export const CodePageCode = styled(SyntaxHighlighter)`
 
 export const CodeSpan = styled.span`
     color: darkgrey;
+`;
+
+export const CodeDeleteButton = styled.button`
+    background-color: red;
+    margin: 0px;
+    :hover {
+        background-color: #d10000;
+    }
 `;

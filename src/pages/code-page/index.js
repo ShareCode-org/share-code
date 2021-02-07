@@ -1,16 +1,20 @@
 import React from 'react';
 import getPost from '../../actions/getPost';
+import deletePost from '../../actions/deletePost';
 import BeatLoader from 'react-spinners/BeatLoader';
+import { decodeToken } from "react-jwt";
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { useParams } from 'react-router-dom';
 import { css } from "@emotion/core";
 import {
     CodePageDiv,
     CodePageDetails,
+    CodePageBottom,
     CodePageTitle,
     CodePageDescription,
     CodePageCode,
-    CodeSpan
+    CodeSpan,
+    CodeDeleteButton
 } from './style';
 
 const CodePage = () => {
@@ -18,6 +22,7 @@ const CodePage = () => {
 
     const [post, setPost] = React.useState({});
     const [loading, setLoading] = React.useState(true);
+    const tokenData = decodeToken(localStorage.getItem('token'));
 
     const codeString = `${post.code}`;
 
@@ -50,7 +55,18 @@ const CodePage = () => {
                     <CodePageCode style={dark}>
                         {codeString}
                     </CodePageCode>
-                    <CodeSpan>By {post.createdBy}</CodeSpan>
+                    <CodePageBottom>
+                        <CodeSpan>By {post.createdBy}</CodeSpan>
+                        {
+                            tokenData === null ?
+                                '' : (
+                                    tokenData.username === post.createdBy ? (
+                                        <CodeDeleteButton onClick={() => deletePost({ id })}>Delete</CodeDeleteButton>
+                                    ) : ''
+                                )
+                        }
+                    </CodePageBottom>
+
                 </CodePageDiv>
             ) : (
                     <BeatLoader

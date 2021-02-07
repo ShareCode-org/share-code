@@ -40,7 +40,10 @@ const App = () => {
                     <Burger open={open} setOpen={setOpen} />
                     <ResponsiveNavbar open={open} setOpen={setOpen} />
                 </div>
-                <ToastContainer position="bottom-right" />
+                <ToastContainer
+                    position="bottom-right"
+                    hideProgressBar
+                />
                 <Switch>
                     <Route exact path="/" component={HomePage} />
                     <Route exact path="/post">
