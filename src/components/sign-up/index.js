@@ -1,9 +1,7 @@
 import React from 'react';
 import { Formik, Field } from "formik";
 import * as Yup from 'yup';
-import API from '../../api/api';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import signUp from '../../actions/signUp';
 import {
     SignUpDiv,
     FormDiv,
@@ -39,12 +37,7 @@ const SignUp = () => (
             }}
             validationSchema={SignupSchema}
             onSubmit={(values, { resetForm }) => {
-                API.post(`/user/signup`, values)
-                    .then(res => {
-                        resetForm();
-                        toast.success('Account created!');
-                    })
-                    .catch(() => toast.error('Account already exist!'))
+                signUp({ values, resetForm })
             }}
         >
             {({ errors, touched }) => (

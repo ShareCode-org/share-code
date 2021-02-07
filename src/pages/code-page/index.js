@@ -1,9 +1,9 @@
 import React from 'react';
+import getPost from '../../actions/getPost';
 import BeatLoader from 'react-spinners/BeatLoader';
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { useParams } from 'react-router-dom';
 import { css } from "@emotion/core";
-import API from '../../api/api';
 import {
     CodePageDiv,
     CodePageDetails,
@@ -31,13 +31,12 @@ const CodePage = () => {
     `;
 
     React.useEffect(() => {
-        API.get('post/' + id)
-            .then(res => {
-                setTimeout(() => {
-                    setPost(res.data);
-                    setLoading(!loading);
-                }, 500)
-            })
+        getPost({
+            id,
+            setPost,
+            setLoading,
+            loading
+        });
     }, []);
 
     return (

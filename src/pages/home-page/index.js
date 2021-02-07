@@ -1,5 +1,5 @@
 import React from 'react';
-import API from '../../api/api';
+import getPosts from '../../actions/getPosts';
 import BeatLoader from 'react-spinners/BeatLoader';
 import CodeCard from '../../components/code-card/index';
 import { css } from "@emotion/core";
@@ -20,13 +20,11 @@ const HomePage = () => {
     `;
 
     React.useEffect(() => {
-        API.get('/post')
-            .then(res => {
-                setTimeout(() => {
-                    setPosts(res.data);
-                    setLoading(!loading);
-                }, 500)
-            })
+        getPosts({
+            setPosts,
+            setLoading,
+            loading
+        });
     }, []);
 
     return (

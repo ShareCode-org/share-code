@@ -20,8 +20,3 @@ export const PostSpan = styled.span`
     margin: 10px;
     color: red;
 `;
-
-export const PostSentAlert = styled.h1`
-    position: relative;
-    top: 100px;
-`;

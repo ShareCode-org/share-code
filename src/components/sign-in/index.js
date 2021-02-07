@@ -1,5 +1,5 @@
 import React from 'react';
-import API from '../../api/api';
+import signIn from '../../actions/signIn';
 import { Formik, Field } from "formik";
 import * as Yup from 'yup';
 import { UserContext } from '../../context/userContext';
@@ -36,17 +36,11 @@ const SignIn = () => {
                 }}
                 validationSchema={SigninSchema}
                 onSubmit={(values, { resetForm }) => {
-                    API.post(`/user/login`, values)
-                        .then(res => {
-                            if (res.data.message === "Auth successful") {
-                                window.location.href = '/';
-                                setIsLogging(true);
-                                localStorage.setItem('token', res.data.token);
-                                localStorage.setItem('isLogging', true);
-                                resetForm();
-                            }
-                        })
-                        .catch(err => err);
+                    signIn({
+                        values,
+                        setIsLogging,
+                        resetForm
+                    });
                 }}
             >
                 {({ errors, touched }) => (

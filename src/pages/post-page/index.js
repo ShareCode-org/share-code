@@ -1,8 +1,7 @@
 import React from 'react';
-import API from '../../api/api';
+import addPost from "../../actions/addPost";
 import { decodeToken } from "react-jwt";
-import { toast } from 'react-toastify';
-import { ContactPageDivContainer, PostCaptcha, PostSpan, PostSentAlert } from './style';
+import { ContactPageDivContainer, PostCaptcha, PostSpan } from './style';
 
 const PostPage = () => {
     const [title, setTitle] = React.useState('');
@@ -11,10 +10,6 @@ const PostPage = () => {
     const tokenData = decodeToken(localStorage.getItem('token'));
     const [errorMessage, setErrorMessage] = React.useState('');
     const [Value, setValue] = React.useState('');
-
-    const onChange = (value) => {
-        setValue(value);
-    };
 
     const postData = {
         title: title,
@@ -25,33 +20,21 @@ const PostPage = () => {
     };
 
     const handleSubmit = () => {
-        if (title === "" && description === "" && code === "") {
-            setErrorMessage('The form is empty');
-        }
-        else if (title === "") {
-            setErrorMessage('Title is empty');
-        }
-        else if (description === "") {
-            setErrorMessage('Description is empty');
-        }
-        else if (code === "") {
-            setErrorMessage('Code is empty');
-        }
-        else {
-            if (Value) {
-                setErrorMessage('');
-                API.post(`/post`, postData)
-                    .then(res => {
-                        setTitle('');
-                        setDescription('');
-                        setCode('');
-                        toast.success('Posted Successfully!');
-                        window.location.href = '/';
-                    })
-            } else {
-                setErrorMessage('Captcha required');
-            }
-        }
+        addPost({
+            postData,
+            title,
+            description,
+            code,
+            Value,
+            setTitle,
+            setDescription,
+            setCode,
+            setErrorMessage
+        });
+    };
+
+    const onChange = (value) => {
+        setValue(value);
     };
 
     return (
@@ -62,7 +45,7 @@ const PostPage = () => {
                         placeholder="Title"
                         value={title}
                         onChange={e => setTitle(e.target.value)}
-                        min="6" 
+                        min="6"
                         max="10"
                     />
                 </div>
@@ -71,7 +54,7 @@ const PostPage = () => {
                         placeholder="Description"
                         value={description}
                         onChange={e => setDescription(e.target.value)}
-                        min="10" 
+                        min="10"
                         max="16"
                     />
                 </div>
