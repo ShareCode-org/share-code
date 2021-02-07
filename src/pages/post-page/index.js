@@ -62,6 +62,8 @@ const PostPage = () => {
                         placeholder="Title"
                         value={title}
                         onChange={e => setTitle(e.target.value)}
+                        min="6" 
+                        max="10"
                     />
                 </div>
                 <div>
@@ -69,6 +71,8 @@ const PostPage = () => {
                         placeholder="Description"
                         value={description}
                         onChange={e => setDescription(e.target.value)}
+                        min="10" 
+                        max="16"
                     />
                 </div>
                 <div>
@@ -76,6 +80,7 @@ const PostPage = () => {
                         placeholder="Code"
                         value={code}
                         onChange={e => setCode(e.target.value)}
+                        min="50"
                     />
                 </div>
                 <PostSpan>{errorMessage}</PostSpan>

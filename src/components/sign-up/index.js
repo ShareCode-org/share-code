@@ -15,14 +15,14 @@ import {
 
 const SignupSchema = Yup.object().shape({
     username: Yup.string()
-        .min(2, 'Too Short!')
-        .max(50, 'Too Long!')
+        .min(4, 'Too Short!')
+        .max(8, 'Too Long!')
         .required('Required'),
 
     email: Yup.string().email('Invalid email').required('Required'),
     password: Yup.string()
-        .min(2, 'Too Short!')
-        .max(50, 'Too Long!')
+        .min(8, 'Too Short!')
+        .max(16, 'Too Long!')
         .required('Required'),
 });
 
