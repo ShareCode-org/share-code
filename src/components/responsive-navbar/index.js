@@ -26,7 +26,7 @@ const ResponsiveNavbar = ({ open }) => {
             Post
           </a>
         ) : (
-            <a onClick={() => alert('Not Available')}>
+            <a onClick={() => alert('You need to login first!')}>
               Post
             </a>
           )

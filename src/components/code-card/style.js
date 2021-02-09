@@ -21,6 +21,10 @@ export const CodeCardDiv = styled.div`
 
 export const CodeCardTitle = styled.h1`
     margin-bottom: 20px;
+    @media (max-width: 768px) {
+        font-size: 30px;
+        margin-bottom: 25px;
+    } 
 `;
 
 export const CodeCardDescription = styled.p``;
