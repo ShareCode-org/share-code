@@ -14,17 +14,10 @@ export const CodeCardDiv = styled.div`
         box-shadow: 0px 11px 16px 0px rgba(5, 5, 5, 0.23);
         transform: scale(1.01);
     }
-    @media (max-width: 768px) {
-        width: 100%;
-    } 
 `;
 
 export const CodeCardTitle = styled.h1`
     margin-bottom: 20px;
-    @media (max-width: 768px) {
-        font-size: 30px;
-        margin-bottom: 25px;
-    } 
 `;
 
 export const CodeCardDescription = styled.p``;

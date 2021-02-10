@@ -8,12 +8,6 @@ export const HomePostsDiv = styled.div`
   position: relative;
   top: 50px;
   margin: 0px auto;
-  @media (max-width: 768px) {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    top: 120px;
-  } 
 `;
 
 export const HomeMessage = styled.h1`

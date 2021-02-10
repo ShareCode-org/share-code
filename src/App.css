@@ -60,8 +60,18 @@ textarea::placeholder {
   color: #7a7aff;
 }
 
+.app-not-working {
+  display: none;
+  position: absolute;
+  top: 40%;
+  text-align: center;
+}
+
 @media (max-width: 768px) {
-  input, textarea {
-    width: 80%;
+  .App {
+    display: none;
+  }
+  .app-not-working {
+    display: block;
   }
 }

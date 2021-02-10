@@ -1,11 +1,7 @@
 import styled from 'styled-components';
 import { Form } from "formik";
 
-export const SignUpDiv = styled.div`
-  @media (max-width: 768px) {
-    margin: 5%;
-  }
-`;
+export const SignUpDiv = styled.div``;
 
 export const FormDiv = styled(Form)`
   position: relative;

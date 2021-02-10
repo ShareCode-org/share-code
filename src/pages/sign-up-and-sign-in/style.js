@@ -8,24 +8,11 @@ export const SignInDivContainer = styled.div`
   justify-content: space-between;
   flex-direction: row-reverse;
   margin: 30px auto;
-  @media (max-width: 768px) {
-    width: 100%;
-    top: 100px;
-      flex-direction: column;
-  }
 `;
 
-export const SignInDiv = styled.div`
-  @media (max-width: 768px) {
-    margin: 5%;
-  }
-`;
+export const SignInDiv = styled.div``;
 
-export const SignUpDiv = styled.div`
-  @media (max-width: 768px) {
-    margin: 5%;
-  }
-`;
+export const SignUpDiv = styled.div``;
 
 export const FormDiv = styled.div`
   position: relative;

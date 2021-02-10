@@ -25,9 +25,6 @@ export const NavbarDiv = styled.div`
     font-size: 25px;
     background-color: #fff;
     border-bottom: solid 1px lightgrey;
-    @media (max-width: 768px) {
-        display: none;
-    }
 `;
 
 export const NavbarUl = styled.ul`
