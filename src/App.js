@@ -42,7 +42,7 @@ const App = () => {
                 </div>
                 <ToastContainer
                     position="bottom-right"
-                    hideProgressBar
+                    autoClose={1500}
                 />
                 <Switch>
                     <Route exact path="/" component={HomePage} />

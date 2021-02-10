@@ -23,7 +23,9 @@ const addPost = ({postData, title, description, code, Value, setTitle, setDescri
                     setDescription('');
                     setCode('');
                     toast.success('Posted Successfully!');
-                    window.location.href = '/';
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 1500);
                 })
         } else {
             setErrorMessage('Captcha required');

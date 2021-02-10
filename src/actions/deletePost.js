@@ -5,7 +5,9 @@ const DeletePost = ({ id }) => {
     API.delete('post/' + id)
         .then(() => {
             toast.success('Post Deleted!');
-            window.location.href = '/';
+            setTimeout(() => {
+                window.location.href = '/';
+            }, 1500);
         })
 };
 
