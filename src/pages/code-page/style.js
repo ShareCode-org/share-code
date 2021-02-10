@@ -4,7 +4,10 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 export const CodePageDiv = styled.div`
     position: absolute;
     top: 25%;
-    margin-left: 10px;
+    left: 25%;
+    @media (max-width: 768px) {
+        margin-left: 10px;
+    }
 `;
 
 export const CodePageDetails = styled.div`

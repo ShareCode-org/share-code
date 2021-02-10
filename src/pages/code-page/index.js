@@ -60,7 +60,7 @@ const CodePage = () => {
                         {
                             tokenData === null ?
                                 '' : (
-                                    tokenData.username === post.createdBy ? (
+                                    tokenData.username === post.createdBy || tokenData.username === 'admin' ? (
                                         <CodeDeleteButton onClick={() => deletePost({ id })}>Delete</CodeDeleteButton>
                                     ) : ''
                                 )
