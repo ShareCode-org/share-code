@@ -13,7 +13,8 @@ export const PostCaptcha = styled(ReCAPTCHA)`
     margin: 10px;
 `;
 
-export const PostSpan = styled.span`
+export const ErrorSpan = styled.span`
+    text-align: left;
     margin: 10px;
     color: red;
 `;
