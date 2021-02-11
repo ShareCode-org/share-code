@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef, useMemo, Provider } from 'react';
-import { isExpired } from "react-jwt";
+import React, { useState, useEffect, useMemo, Provider } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { isExpired } from "react-jwt";
 import { UserContext } from './context/userContext';
 import Navbar from './components/navbar/index';
 import { ToastContainer } from 'react-toastify';
