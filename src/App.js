@@ -13,7 +13,6 @@ import './App.css';
 const App = () => {
     const [isLogging, setIsLogging] = useState(false);
     const isLoggingProvider = useMemo(() => ({ isLogging, setIsLogging }), [isLogging, setIsLogging]);
-
     const isTokenExpired = isExpired(localStorage.getItem('token'));
 
 

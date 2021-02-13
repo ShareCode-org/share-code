@@ -21,7 +21,6 @@ const AddPostSchema = Yup.object().shape({
 });
 
 const PostPage = () => {
-    const [CaptchaValue, setCaptchaValue] = React.useState('');
     const tokenData = decodeToken(localStorage.getItem('token'));
 
     return (
@@ -32,7 +31,6 @@ const PostPage = () => {
                     description: '',
                     code: '',
                     createdBy: tokenData.username,
-                    token: localStorage.getItem('token'),
                     recaptcha: ''
                 }}
                 validationSchema={AddPostSchema}
