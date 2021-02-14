@@ -8,7 +8,6 @@ const SignUpAndSignIn = () => (
         <SignUp />
         <SignIn />
     </SignInDivContainer>
-)
-
+);
 
 export default SignUpAndSignIn;

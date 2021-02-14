@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, Field } from "formik";
+import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
 import signUp from '../../actions/signUp';
 import {

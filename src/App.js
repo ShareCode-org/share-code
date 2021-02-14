@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, Provider } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { isExpired } from 'react-jwt';
 import { UserContext } from './context/userContext';
