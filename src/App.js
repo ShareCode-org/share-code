@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, Provider } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { isExpired } from "react-jwt";
+import { isExpired } from 'react-jwt';
 import { UserContext } from './context/userContext';
 import Navbar from './components/navbar/index';
 import { ToastContainer } from 'react-toastify';
@@ -38,15 +38,7 @@ const App = () => {
                     />
                     <Switch>
                         <Route exact path="/" component={HomePage} />
-                        <Route exact path="/post">
-                            {
-                                isLogging ? (
-                                    <PostPage />
-                                ) : (
-                                        <Redirect to="/" />
-                                    )
-                            }
-                        </Route>
+                        <Route exact path="/post" component={PostPage} />
                         <Route path={`/post/:id`} component={CodePage} />
                         <Route path="/sign-up-and-sign-in">
                             {
@@ -60,7 +52,7 @@ const App = () => {
                     </Switch>
                 </UserContext.Provider>
             </div>
-            <h1 class="app-not-working">
+            <h1 className="app-not-working">
                 Website don't work in mobile.
             </h1>
         </div>

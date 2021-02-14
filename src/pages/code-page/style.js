@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import SyntaxHighlighter from 'react-syntax-highlighter';
 
 export const CodePageDiv = styled.div`
     position: absolute;

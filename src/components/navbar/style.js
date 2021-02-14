@@ -16,14 +16,10 @@ export const NavbarDiv = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
-    top: 0px;
-    left: 0;
     z-index: 1;
     margin: 3.5%;
     margin-bottom: 3%;
     font-size: 25px;
-    background-color: #fff;
     border-bottom: solid 1px lightgrey;
 `;
 

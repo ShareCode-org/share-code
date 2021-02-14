@@ -1,25 +1,18 @@
-import axios from 'axios';
+import API from '../api/api';
 import { toast } from 'react-toastify';
 
-const addPost = async ({ values, resetForm }) => {
-    await axios({
-        method: 'POST',
-        url: `https://share-code-server.glitch.me/post`,
-        data: {
-            title: values.title,
-            description: values.description,
-            code: values.code,
-            createdBy: values.createdBy
-        },
-        headers: {
-            Authorization: localStorage.getItem('token')
-        },
+const addPost = ({ values, resetForm }) => {
+    API.post('/post', {
+        title: values.title,
+        description: values.description,
+        code: values.code,
+        createdBy: values.createdBy
     })
         .then(() => {
             resetForm();
             toast.success('Posted Successfully!');
             setTimeout(() => {
-                window.location.href = '/';
+                window.location.href = '/post';
             }, 1500);
         })
 };

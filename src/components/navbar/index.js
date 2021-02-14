@@ -24,28 +24,15 @@ const Navbar = () => {
                             Home
                         </NavbarA>
                     </NavbarLi>
-
-
-                    {
-                        isLogging ? (
-                            <NavbarLi>
-                                <NavbarA
-                                    to="/post"
-                                    activeStyle={{
-                                        color: "#a8a8a8"
-                                    }}>
-                                    Post
-                                    </NavbarA>
-                            </NavbarLi>
-                        ) : (
-                                <NavbarLi>
-                                    <NotAvailable>
-                                        Post
-                                    </NotAvailable>
-                                </NavbarLi>
-                            )
-                    }
-
+                    <NavbarLi>
+                        <NavbarA
+                            to="/post"
+                            activeStyle={{
+                                color: "#a8a8a8"
+                            }}>
+                            Post
+                        </NavbarA>
+                    </NavbarLi>
                     {
                         isLogging ? (
                             <NavbarLi>

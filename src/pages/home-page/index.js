@@ -1,62 +1,55 @@
 import React from 'react';
-import getPosts from '../../actions/getPosts';
-import BeatLoader from 'react-spinners/BeatLoader';
-import CodeCard from '../../components/code-card/index';
-import { css } from "@emotion/core";
-import { HomePostsDiv, HomeMessage } from './style';
+import Fast from '../../assests/fast.jpg';
+import Accessible from '../../assests/accessible.png';
+import Help from '../../assests/help.svg';
+import {
+    AboutContainer,
+    AboutContentDiv,
+    AboutImg,
+    AboutH2,
+    AboutP,
+    FeaturesContainer,
+    FeaturesDiv,
+    FeatureDiv,
+    FeaturesTitle,
+    FeaturesUnderline,
+    FeatureImg,
+    Featuretxt
+} from "./style";
 
-const HomePage = () => {
-    const [posts, setPosts] = React.useState([]);
-    const [loading, setLoading] = React.useState(true);
+const HomePage = () => (
+    <div>
+        <AboutContainer>
+            <AboutContentDiv>
+                <AboutH2>
+                    Share<span style={{ color: "blue" }}>Code</span>
+                </AboutH2>
+                <AboutP>
+                    A open source website that make developers share code with each other.
+                </AboutP>
+            </AboutContentDiv>
+            <AboutImg src="https://svgshare.com/i/TzT.svg" />
+        </AboutContainer>
+        <FeaturesContainer>
+            <FeaturesTitle>Features</FeaturesTitle>
+            <FeaturesUnderline />
+            <FeaturesDiv>
+                <FeatureDiv>
+                    <FeatureImg src={Fast} />
+                    <Featuretxt>Fast</Featuretxt>
+                </FeatureDiv>
+                <FeatureDiv>
+                    <FeatureImg src={Accessible} />
+                    <Featuretxt>Accessible</Featuretxt>
+                </FeatureDiv>
+                <FeatureDiv>
+                    <FeatureImg src={Help} />
+                    <Featuretxt>Help</Featuretxt>
+                </FeatureDiv>
+            </FeaturesDiv>
+        </FeaturesContainer>
+    </div>
+);
 
-
-    const override = css`
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        @media (max-width: 768px) {
-            left: 42%;
-        } 
-    `;
-
-    React.useEffect(() => {
-        getPosts({
-            setPosts,
-            setLoading,
-            loading
-        });
-    }, []);
-
-    return (
-        <div>
-            {!loading ? (
-                posts.length ? (
-                    <HomePostsDiv>
-                        {posts.map((post, index) => (
-                            <CodeCard
-                                key={index}
-                                title={post.title}
-                                description={post.description}
-                                id={post._id}
-                            />
-                        ))}
-                    </HomePostsDiv>
-
-                ) : (
-                        <HomeMessage>There is no posts.</HomeMessage>
-                    )
-            ) : (
-                    <div>
-                        <BeatLoader
-                            color='blue'
-                            loading={loading}
-                            css={override}
-                            size={20}
-                        />
-                    </div>
-                )}
-        </div>
-    )
-};
 
 export default HomePage;

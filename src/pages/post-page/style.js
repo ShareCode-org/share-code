@@ -1,20 +1,17 @@
 import styled from 'styled-components';
-import ReCAPTCHA from "react-google-recaptcha";
 
-export const ContactPageDivContainer = styled.div`
-    position: relative;
-    top: 80px;
-    text-align: center;
+export const HomePostsDiv = styled.div` 
+  width: 85vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+  grid-gap: 20px;
+  position: relative;
+  top: 50px;
+  margin: 0px auto;
 `;
 
-export const PostCaptcha = styled(ReCAPTCHA)`
-    display: flex;
-    justify-content: center;
-    margin: 10px;
-`;
-
-export const ErrorSpan = styled.span`
-    text-align: left;
-    margin: 10px;
-    color: red;
+export const HomeMessage = styled.h1`
+  text-align: center;
+  position: relative;
+  top: 200px;
 `;

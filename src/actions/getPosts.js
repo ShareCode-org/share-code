@@ -8,6 +8,7 @@ const getPosts = ({ setPosts, setLoading, loading }) => {
                 setLoading(!loading);
             }, 500)
         })
+        .catch(() => setLoading(false))
 };
 
 export default getPosts;
