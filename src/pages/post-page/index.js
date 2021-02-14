@@ -1,26 +1,15 @@
 import React from 'react';
 import { UserContext } from '../../context/userContext';
 import getPosts from '../../actions/getPosts';
-import BeatLoader from 'react-spinners/BeatLoader';
+import Loader from '../../components/loader/index';
 import CodeCard from '../../components/code-card/index';
 import PostForm from '../../components/post-form/index';
-import { css } from "@emotion/core";
 import { HomePostsDiv, HomeMessage } from './style';
 
 const PostPage = () => {
     const { isLogging } = React.useContext(UserContext);
     const [posts, setPosts] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
-
-
-    const override = css`
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        @media (max-width: 768px) {
-            left: 42%;
-        } 
-    `;
 
     React.useEffect(() => {
         getPosts({
@@ -57,12 +46,7 @@ const PostPage = () => {
                     )
             ) : (
                     <div>
-                        <BeatLoader
-                            color='blue'
-                            loading={loading}
-                            css={override}
-                            size={20}
-                        />
+                        <Loader loading={loading} />
                     </div>
                 )}
         </div>

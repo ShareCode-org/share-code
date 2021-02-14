@@ -1,11 +1,10 @@
 import React from 'react';
 import getPost from '../../actions/getPost';
 import deletePost from '../../actions/deletePost';
-import BeatLoader from 'react-spinners/BeatLoader';
+import Loader from '../../components/loader/index';
 import { decodeToken } from "react-jwt";
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { useParams } from 'react-router-dom';
-import { css } from "@emotion/core";
 import {
     CodePageDiv,
     CodePageDetails,
@@ -25,12 +24,6 @@ const CodePage = () => {
     const tokenData = decodeToken(localStorage.getItem('token'));
 
     const codeString = `${post.code}`;
-
-    const override = css`
-        position: absolute;
-        top: 50%;
-        left: 50%;
-    `;
 
     React.useEffect(() => {
         getPost({
@@ -70,12 +63,7 @@ const CodePage = () => {
 
                 </CodePageDiv>
             ) : (
-                    <BeatLoader
-                        color='blue'
-                        loading={loading}
-                        css={override}
-                        size={20}
-                    />
+                    <Loader loading={loading} />
                 )
             }
         </div>

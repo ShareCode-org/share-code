@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import BeatLoader from 'react-spinners/BeatLoader';
-import { css } from "@emotion/core";
+import Loader from '../../components/loader/index';
 import Fast from '../../assests/fast.jpg';
 import Accessible from '../../assests/accessible.png';
 import Help from '../../assests/help.svg';
@@ -20,15 +19,8 @@ import {
 } from "./style";
 
 const HomePage = () => {
-    const [loading, setLoading] = React.useState(true);
-
+    const [loading, setLoading] = useState(true);
     useEffect(() => setTimeout(() => setLoading(false), 500), []);
-
-    const override = css`
-        position: absolute;
-        top: 50%;
-        left: 50%;
-    `;
 
     return (
         <div>
@@ -65,13 +57,7 @@ const HomePage = () => {
                     </FeaturesContainer>
                 </div>
             ) : (
-
-                    <BeatLoader
-                        color='blue'
-                        loading={loading}
-                        css={override}
-                        size={20}
-                    />
+                    <Loader loading={loading} />
                 )}
         </div>
     )
