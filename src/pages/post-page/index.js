@@ -51,6 +51,10 @@ const PostPage = () => {
                         </div>
                     ) : (
                             <div>
+                                <SUPDiv>
+                                    <input type="checkbox" onChange={onChange} />
+                                    <label>your posts</label>
+                                </SUPDiv>
                                 <HomeMessage>There is no posts.</HomeMessage>
                             </div>
                         )
