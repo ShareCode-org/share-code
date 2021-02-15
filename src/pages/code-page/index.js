@@ -3,7 +3,7 @@ import getPost from '../../actions/getPost';
 import deletePost from '../../actions/deletePost';
 import Loader from '../../components/loader/index';
 import { decodeToken } from "react-jwt";
-import { dark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { androidstudio } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { useParams } from 'react-router-dom';
 import {
     CodePageDiv,
@@ -43,7 +43,8 @@ const CodePage = () => {
                         <CodePageDescription>{post.description}</CodePageDescription>
                     </CodePageDetails>
                     <CodePageCode
-                        style={dark}
+                        language="javascript"
+                        style={androidstudio}
                         showLineNumbers
                         useInlineStyles={true}
                     >
