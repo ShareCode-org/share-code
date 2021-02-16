@@ -23,8 +23,6 @@ const CodePage = () => {
     const [loading, setLoading] = React.useState(true);
     const tokenData = decodeToken(localStorage.getItem('token'));
 
-    const codeString = `${post.code}`;
-
     React.useEffect(() => {
         getPost({
             id,
@@ -48,7 +46,7 @@ const CodePage = () => {
                         showLineNumbers
                         useInlineStyles={true}
                     >
-                        {codeString}
+                        {`${post.code}`}
                     </CodePageCode>
                     <CodePageBottom>
                         <CodeSpan>By {post.createdBy}</CodeSpan>
