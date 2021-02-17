@@ -1,12 +1,13 @@
 import React from 'react';
 import addPost from '../../actions/addPost';
-import { Formik, Form, FastField, Field } from 'formik';
+import { Formik, Form, FastField } from 'formik';
 import * as Yup from 'yup';
 import { decodeToken } from 'react-jwt';
 import Modal from 'react-modal';
 import PostButton from '../post-button/index';
 import {
-    PostPageDiv,
+    PostFormDiv,
+    PostInput,
     PostCaptcha,
     ErrorSpan
 } from './style';
@@ -43,7 +44,7 @@ const PostForm = () => {
 
     return (
         <div>
-            <PostPageDiv>
+            <PostFormDiv>
                 <PostButton onClick={() => setIsOpen(true)} />
                 <Modal
                     isOpen={IsOpen}
@@ -70,7 +71,7 @@ const PostForm = () => {
                         {({ errors, touched, setFieldValue }) => (
                             <Form>
                                 <div>
-                                    <Field
+                                    <PostInput
                                         name='title'
                                         type='title'
                                         placeholder="Title"
@@ -80,7 +81,7 @@ const PostForm = () => {
                                     <ErrorSpan>{errors.title}</ErrorSpan>
                                 ) : null}
                                 <div>
-                                    <Field
+                                    <PostInput
                                         name='description'
                                         type='description'
                                         placeholder="Description"
@@ -90,7 +91,7 @@ const PostForm = () => {
                                     <ErrorSpan>{errors.description}</ErrorSpan>
                                 ) : null}
                                 <div>
-                                    <Field
+                                    <PostInput
                                         as='textarea'
                                         name='code'
                                         type='code'
@@ -123,7 +124,7 @@ const PostForm = () => {
                         )}
                     </Formik>
                 </Modal>
-            </PostPageDiv>
+            </PostFormDiv>
         </div>
     )
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import { UserContext } from '../../context/userContext';
 import { decodeToken } from "react-jwt";
 import getPosts from '../../actions/getPosts';
+import checkboxChange from '../../actions/checkboxChange';
 import Loader from '../../components/loader/index';
 import CodeCard from '../../components/code-card/index';
 import PostForm from '../../components/post-form/index';
@@ -19,14 +20,7 @@ const PostPage = () => {
         getPosts({ setPosts, setLoading, loading, load });
     }, []);
 
-    const onChange = (e) => {
-        if (e.target.checked) {
-            setPosts(posts.filter(post => post.createdBy === tokenData.username));
-        } else {
-            var load = false;
-            getPosts({ setPosts, setLoading, loading, load });
-        }
-    };
+    const SupGlobalFunc = (e) => checkboxChange({ e, getPosts, setPosts, posts, setLoading, loading, tokenData });
 
     return (
         <div>
@@ -34,7 +28,9 @@ const PostPage = () => {
                 isLogging ? (
                     posts.length ? (
                         <div>
-                            <SupCheckbox onChange={onChange} />
+                            <SupCheckbox
+                                onChange={SupGlobalFunc}
+                            />
                             <HomePostsDiv>
                                 {posts.map((post, index) => (
                                     <CodeCard
@@ -49,7 +45,9 @@ const PostPage = () => {
                         </div>
                     ) : (
                             <div>
-                                <SupCheckbox onChange={onChange} />
+                                <SupCheckbox
+                                    onChange={SupGlobalFunc}
+                                />
                                 <HomeMessage>There is no posts.</HomeMessage>
                             </div>
                         )

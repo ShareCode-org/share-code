@@ -3,7 +3,11 @@ import { SUPDiv } from './style';
 
 const SupCheckbox = ({ onChange }) => (
     <SUPDiv>
-        <input type="checkbox" onChange={onChange} />
+        <input
+            className='checkbox'
+            type="checkbox"
+            onChange={onChange}
+        />
         <label>your posts</label>
     </SUPDiv>
 );
