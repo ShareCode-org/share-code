@@ -8,6 +8,7 @@ const getPost = ({ id, setPost, setLoading, loading }) => {
                 setLoading(!loading);
             }, 500)
         })
+        .catch(() => window.location.href = `/404/post/${id}`)
 };
 
 export default getPost;

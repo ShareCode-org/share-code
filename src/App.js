@@ -8,6 +8,7 @@ import HomePage from './pages/home-page/index';
 import PostPage from './pages/post-page/index';
 import CodePage from './pages/code-page/index';
 import SignUpAndSignIn from './pages/sign-up-and-sign-in/index';
+import NotFound from './pages/404-page/index';
 import './App.css';
 
 const App = () => {
@@ -39,8 +40,8 @@ const App = () => {
                     <Switch>
                         <Route exact path="/" component={HomePage} />
                         <Route exact path="/post" component={PostPage} />
-                        <Route path={`/post/:id`} component={CodePage} />
-                        <Route path="/sign-up-and-sign-in">
+                        <Route exact path={`/post/:id`} component={CodePage} />
+                        <Route exact path="/sign-up-and-sign-in">
                             {
                                 isLogging ? (
                                     <Redirect to="/" />
@@ -49,6 +50,7 @@ const App = () => {
                                     )
                             }
                         </Route>
+                        <Route component={NotFound} />
                     </Switch>
                 </UserContext.Provider>
             </div>
