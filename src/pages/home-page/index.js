@@ -29,7 +29,7 @@ const HomePage = () => {
                     <AboutContainer>
                         <AboutContentDiv>
                             <AboutH2>
-                                Share<span style={{ color: "blue" }}>Code</span>
+                                Share<span style={{ color: "lightgrey" }}>Code</span>
                             </AboutH2>
                             <AboutP>
                                 An open source website that make developers share code with each other.
