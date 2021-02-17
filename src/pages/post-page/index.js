@@ -7,7 +7,7 @@ import Loader from '../../components/loader/index';
 import CodeCard from '../../components/code-card/index';
 import PostForm from '../../components/post-form/index';
 import SupCheckbox from '../../components/sup-checkbox/index';
-import { HomePostsDiv, HomeMessage } from './style';
+import { PostsDiv, PostMessage } from './style';
 
 const PostPage = () => {
     const [posts, setPosts] = React.useState([]);
@@ -31,7 +31,7 @@ const PostPage = () => {
                             <SupCheckbox
                                 onChange={SupGlobalFunc}
                             />
-                            <HomePostsDiv>
+                            <PostsDiv>
                                 {posts.map((post, index) => (
                                     <CodeCard
                                         key={index}
@@ -41,19 +41,19 @@ const PostPage = () => {
                                     />
                                 ))}
                                 <PostForm />
-                            </HomePostsDiv>
+                            </PostsDiv>
                         </div>
                     ) : (
                             <div>
                                 <SupCheckbox
                                     onChange={SupGlobalFunc}
                                 />
-                                <HomeMessage>There is no posts.</HomeMessage>
+                                <PostMessage>There is no posts.</PostMessage>
                             </div>
                         )
 
                 ) : (
-                        <HomeMessage>You need to login in to see posts.</HomeMessage>
+                        <PostMessage>You need to login in to see posts.</PostMessage>
                     )
             ) : (
                     <div>
