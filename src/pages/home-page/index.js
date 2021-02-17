@@ -32,7 +32,7 @@ const HomePage = () => {
                                 Share<span style={{ color: "blue" }}>Code</span>
                             </AboutH2>
                             <AboutP>
-                                A open source website that make developers share code with each other.
+                                An open source website that make developers share code with each other.
                                 </AboutP>
                         </AboutContentDiv>
                         <AboutImg src="https://svgshare.com/i/TzT.svg" />
