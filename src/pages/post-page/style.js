@@ -10,11 +10,6 @@ export const HomePostsDiv = styled.div`
   margin: 0px auto;
 `;
 
-export const SUPDiv = styled.div`
-  display: flex;
-  position: fixed;
-`;
-
 export const HomeMessage = styled.h1`
   text-align: center;
   position: relative;

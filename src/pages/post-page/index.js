@@ -5,7 +5,8 @@ import getPosts from '../../actions/getPosts';
 import Loader from '../../components/loader/index';
 import CodeCard from '../../components/code-card/index';
 import PostForm from '../../components/post-form/index';
-import { HomePostsDiv, SUPDiv, HomeMessage } from './style';
+import SupCheckbox from '../../components/sup-checkbox/index';
+import { HomePostsDiv, HomeMessage } from './style';
 
 const PostPage = () => {
     const [posts, setPosts] = React.useState([]);
@@ -33,10 +34,7 @@ const PostPage = () => {
                 isLogging ? (
                     posts.length ? (
                         <div>
-                            <SUPDiv>
-                                <input type="checkbox" onChange={onChange} />
-                                <label>your posts</label>
-                            </SUPDiv>
+                            <SupCheckbox onChange={onChange} />
                             <HomePostsDiv>
                                 {posts.map((post, index) => (
                                     <CodeCard
@@ -51,10 +49,7 @@ const PostPage = () => {
                         </div>
                     ) : (
                             <div>
-                                <SUPDiv>
-                                    <input type="checkbox" onChange={onChange} />
-                                    <label>your posts</label>
-                                </SUPDiv>
+                                <SupCheckbox onChange={onChange} />
                                 <HomeMessage>There is no posts.</HomeMessage>
                             </div>
                         )

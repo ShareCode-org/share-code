@@ -17,7 +17,7 @@ import {
 } from './style';
 
 const CodePage = () => {
-    let { id } = useParams();
+    const { id } = useParams();
 
     const [post, setPost] = React.useState({});
     const [loading, setLoading] = React.useState(true);
@@ -44,7 +44,6 @@ const CodePage = () => {
                         language="javascript"
                         style={androidstudio}
                         showLineNumbers
-                        useInlineStyles={true}
                     >
                         {`${post.code}`}
                     </CodePageCode>
