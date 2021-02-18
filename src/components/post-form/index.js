@@ -92,7 +92,7 @@ const PostForm = () => {
                                 ) : null}
                                 <div>
                                     <PostInput
-                                        as='textarea'
+                                        component='textarea'
                                         name='code'
                                         type='code'
                                         placeholder="Code"
