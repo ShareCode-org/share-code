@@ -48,6 +48,7 @@ const PostPage = () => {
                                 <SupCheckbox
                                     onChange={SupGlobalFunc}
                                 />
+                                <PostForm />
                                 <PostMessage>There is no posts.</PostMessage>
                             </div>
                         )

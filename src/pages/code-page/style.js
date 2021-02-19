@@ -13,7 +13,7 @@ export const CodePageDetails = styled.div`
     margin-bottom: 10px;
 `;
 
-export const CodePageBottom = styled.div`
+export const CodePageTop = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;

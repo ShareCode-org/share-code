@@ -2,12 +2,14 @@ import React from 'react';
 import getPost from '../../actions/getPost';
 import deletePost from '../../actions/deletePost';
 import Loader from '../../components/loader/index';
+import PostMenu from '../../components/post-menu/index';
 import { decodeToken } from "react-jwt";
 import { androidstudio } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { useParams } from 'react-router-dom';
 import {
     CodePageDiv,
     CodePageDetails,
+    CodePageTop,
     CodePageBottom,
     CodePageTitle,
     CodePageDescription,
@@ -37,7 +39,17 @@ const CodePage = () => {
             {!loading ? (
                 <CodePageDiv>
                     <CodePageDetails>
-                        <CodePageTitle>{post.title}</CodePageTitle>
+                        <CodePageTop>
+                            <CodePageTitle>{post.title}</CodePageTitle>
+                            {
+                                tokenData === null ?
+                                    '' : (
+                                        tokenData.username === post.createdBy || tokenData.username === 'admin' ? (
+                                            <PostMenu deleteFunc={() => deletePost({ id })} />
+                                        ) : ''
+                                    )
+                            }
+                        </CodePageTop>
                         <CodePageDescription>{post.description}</CodePageDescription>
                     </CodePageDetails>
                     <CodePageCode
@@ -47,18 +59,7 @@ const CodePage = () => {
                     >
                         {`${post.code}`}
                     </CodePageCode>
-                    <CodePageBottom>
-                        <CodeSpan>By {post.createdBy}</CodeSpan>
-                        {
-                            tokenData === null ?
-                                '' : (
-                                    tokenData.username === post.createdBy || tokenData.username === 'admin' ? (
-                                        <CodeDeleteButton onClick={() => deletePost({ id })}>Delete</CodeDeleteButton>
-                                    ) : ''
-                                )
-                        }
-                    </CodePageBottom>
-
+                    <CodeSpan>By {post.createdBy}</CodeSpan>
                 </CodePageDiv>
             ) : (
                     <Loader loading={loading} />
