@@ -16,7 +16,6 @@ const App = () => {
     const isLoggingProvider = useMemo(() => ({ isLogging, setIsLogging }), [isLogging, setIsLogging]);
     const isTokenExpired = isExpired(localStorage.getItem('token'));
 
-
     useEffect(() => {
         if (isTokenExpired) {
             localStorage.setItem('token', '');

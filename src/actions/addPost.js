@@ -8,11 +8,11 @@ const addPost = ({ values, resetForm }) => {
         code: values.code,
         createdBy: values.createdBy
     })
-        .then(() => {
+        .then(res => {
             resetForm();
             toast.success('Posted Successfully!');
             setTimeout(() => {
-                window.location.href = '/post';
+                window.location.href = `/post/${res.data.createdPost._id}`;
             }, 1500);
         })
 };
