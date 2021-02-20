@@ -74,14 +74,11 @@ const PostMenu = ({ deleteFunc }) => {
           </ListItemIcon>
           <ListItemText primary="Edit" />
         </StyledMenuItem>
-        <StyledMenuItem>
+        <StyledMenuItem  onClick={deleteFunc}>
           <ListItemIcon>
             <DeleteIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText
-            primary="Delete"
-            onClick={deleteFunc}
-          />
+          <ListItemText primary="Delete" />
         </StyledMenuItem>
       </StyledMenu>
     </div>
