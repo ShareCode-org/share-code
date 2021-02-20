@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 import ReCAPTCHA from "react-google-recaptcha";
-import { Field } from 'formik';
+import { Form, Field } from 'formik';
 
 export const PostFormDiv = styled.div`
     text-align: center;
     margin: 20px;
+`;
+
+export const PostFORM = styled(Form)`
+    padding: 30px;
 `;
 
 export const PostInput = styled(Field)`

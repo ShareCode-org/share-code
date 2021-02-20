@@ -7,6 +7,7 @@ import Modal from 'react-modal';
 import PostButton from '../post-button/index';
 import {
     PostFormDiv,
+    PostFORM,
     PostInput,
     PostCaptcha,
     ErrorSpan
@@ -69,7 +70,7 @@ const PostForm = () => {
                         }}
                     >
                         {({ errors, touched, setFieldValue }) => (
-                            <Form>
+                            <PostFORM>
                                 <div>
                                     <PostInput
                                         name='title'
@@ -120,7 +121,7 @@ const PostForm = () => {
                                         </button>
                                     </div>
                                 </div>
-                            </Form>
+                            </PostFORM>
                         )}
                     </Formik>
                 </Modal>
