@@ -35,22 +35,38 @@ const HomePage = () => {
                                 An open source website that make developers share code with each other.
                                 </AboutP>
                         </AboutContentDiv>
-                        <AboutImg src="https://svgshare.com/i/TzT.svg" />
+                        <AboutImg
+                            src="https://svgshare.com/i/TzT.svg"
+                            alt='ShareCode!'
+                            title='ShareCode!'
+                        />
                     </AboutContainer>
                     <FeaturesContainer>
                         <FeaturesTitle>Features</FeaturesTitle>
                         <FeaturesUnderline />
                         <FeaturesDiv>
                             <FeatureDiv>
-                                <FeatureImg src={Fast} />
+                                <FeatureImg
+                                    src={Fast}
+                                    alt='Fast'
+                                    title='Fast'
+                                />
                                 <Featuretxt>Fast</Featuretxt>
                             </FeatureDiv>
                             <FeatureDiv>
-                                <FeatureImg src={Accessible} />
+                                <FeatureImg
+                                    src={Accessible}
+                                    alt='Accessible'
+                                    title='Accessible'
+                                />
                                 <Featuretxt>Accessible</Featuretxt>
                             </FeatureDiv>
                             <FeatureDiv>
-                                <FeatureImg src={Help} />
+                                <FeatureImg
+                                    src={Help}
+                                    alt='Help'
+                                    title='Help'
+                                />
                                 <Featuretxt>Help</Featuretxt>
                             </FeatureDiv>
                         </FeaturesDiv>
