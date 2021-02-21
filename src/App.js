@@ -25,6 +25,8 @@ const App = () => {
 
         const data = localStorage.getItem('isLogging');
         setIsLogging(JSON.parse(data));
+
+        document.title = 'ShareCode';
     }, [])
 
     return (

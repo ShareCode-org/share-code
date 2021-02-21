@@ -1,4 +1,5 @@
 import React from 'react';
+import { Prompt } from 'react-router'
 import getPost from '../../actions/getPost';
 import deletePost from '../../actions/deletePost';
 import Loader from '../../components/loader/index';
@@ -10,12 +11,10 @@ import {
     CodePageDiv,
     CodePageDetails,
     CodePageTop,
-    CodePageBottom,
     CodePageTitle,
     CodePageDescription,
     CodePageCode,
-    CodeSpan,
-    CodeDeleteButton
+    CodeSpan
 } from './style';
 
 const CodePage = () => {
@@ -36,6 +35,12 @@ const CodePage = () => {
 
     return (
         <div>
+            <Prompt
+                message={() => {
+                    ""
+                    document.title = 'ShareCode'
+                }}
+            />
             {!loading ? (
                 <CodePageDiv>
                     <CodePageDetails>

@@ -38,11 +38,3 @@ export const CodePageCode = styled(SyntaxHighlighter)`
 export const CodeSpan = styled.span`
     color: darkgrey;
 `;
-
-export const CodeDeleteButton = styled.button`
-    background-color: red;
-    margin: 0px;
-    :hover {
-        background-color: #d10000;
-    }
-`;
