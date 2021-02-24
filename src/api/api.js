@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default axios.create({
-  baseURL: process.env.API_URL || 'localhost:3001/',
+  baseURL: 'https://share-code-server.glitch.me/',
   headers: {
     Authorization: localStorage.getItem('token')
   }
