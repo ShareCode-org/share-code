@@ -9,6 +9,7 @@ import PostPage from './pages/post-page/index';
 import CodePage from './pages/code-page/index';
 import SignUpAndSignIn from './pages/sign-up-and-sign-in/index';
 import NotFound from './pages/404-page/index';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 const App = () => {

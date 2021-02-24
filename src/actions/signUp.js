@@ -1,6 +1,5 @@
 import API from '../api/api';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const signUp = ({ values, resetForm }) => {
     API.post(`/user/signup`, values)

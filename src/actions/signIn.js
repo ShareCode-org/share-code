@@ -1,4 +1,5 @@
 import API from '../api/api';
+import { toast } from 'react-toastify';
 
 const signIn = ({ values, setIsLogging, resetForm }) => {
     API.post(`/user/login`, values)
@@ -11,7 +12,7 @@ const signIn = ({ values, setIsLogging, resetForm }) => {
                 localStorage.setItem('isLogging', true);
             }
         })
-        .catch(err => err);
+        .catch(err => toast.error('The account username or password is incorrect.'));
 };
 
 export default signIn;
