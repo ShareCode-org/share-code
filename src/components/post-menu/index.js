@@ -1,5 +1,7 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { toast } from 'react-toastify';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Menu from '@material-ui/core/Menu';
@@ -8,6 +10,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
+import LinkIcon from '@material-ui/icons/Link';
 
 const StyledMenu = withStyles({
   paper: {
@@ -40,7 +43,7 @@ const StyledMenuItem = withStyles(() => ({
   },
 }))(MenuItem);
 
-const PostMenu = ({ deleteFunc }) => {
+const PostMenu = ({ tokenData, post, deleteFunc }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -68,18 +71,38 @@ const PostMenu = ({ deleteFunc }) => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <StyledMenuItem>
-          <ListItemIcon>
-            <EditIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Edit" />
-        </StyledMenuItem>
-        <StyledMenuItem  onClick={deleteFunc}>
-          <ListItemIcon>
-            <DeleteIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Delete" />
-        </StyledMenuItem>
+        {
+          tokenData === null ?
+            '' : (
+              tokenData.username === post.createdBy || tokenData.username === 'admin' ? (
+                <div>
+                  <StyledMenuItem>
+                    <ListItemIcon>
+                      <EditIcon fontSize="small" />
+                    </ListItemIcon>
+                    <ListItemText primary="Edit" />
+                  </StyledMenuItem>
+                  <StyledMenuItem onClick={deleteFunc}>
+                    <ListItemIcon>
+                      <DeleteIcon fontSize="small" />
+                    </ListItemIcon>
+                    <ListItemText primary="Delete" />
+                  </StyledMenuItem>
+                </div>
+              ) : ''
+            )
+        }
+        <CopyToClipboard
+          text={window.location.href}
+          onCopy={() => toast.success('Copied Successfully!')}
+        >
+          <StyledMenuItem>
+            <ListItemIcon>
+              <LinkIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText primary="Share" />
+          </StyledMenuItem>
+        </CopyToClipboard>
       </StyledMenu>
     </div>
   );

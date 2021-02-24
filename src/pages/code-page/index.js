@@ -46,14 +46,11 @@ const CodePage = () => {
                     <CodePageDetails>
                         <CodePageTop>
                             <CodePageTitle>{post.title}</CodePageTitle>
-                            {
-                                tokenData === null ?
-                                    '' : (
-                                        tokenData.username === post.createdBy || tokenData.username === 'admin' ? (
-                                            <PostMenu deleteFunc={() => deletePost({ id })} />
-                                        ) : ''
-                                    )
-                            }
+                            <PostMenu
+                                tokenData={tokenData}
+                                post={post}
+                                deleteFunc={() => deletePost({ id })}
+                            />
                         </CodePageTop>
                         <CodePageDescription>{post.description}</CodePageDescription>
                     </CodePageDetails>
