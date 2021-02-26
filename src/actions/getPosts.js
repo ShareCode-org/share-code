@@ -6,7 +6,7 @@ const getPosts = ({ setPosts, setLoading, loading, load }) => {
             if (load) {
                 setTimeout(() => {
                     setPosts(res.data);
-                    setLoading(false);
+                    setLoading(!loading);
                 }, 500)
             } else {
                 setPosts(res.data);

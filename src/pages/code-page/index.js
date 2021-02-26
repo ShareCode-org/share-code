@@ -1,12 +1,11 @@
 import React from 'react';
-import { Prompt } from 'react-router'
+import { useParams, Prompt } from 'react-router';
 import getPost from '../../actions/getPost';
 import deletePost from '../../actions/deletePost';
 import Loader from '../../components/loader/index';
 import PostMenu from '../../components/post-menu/index';
 import { decodeToken } from "react-jwt";
 import { androidstudio } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import { useParams } from 'react-router-dom';
 import {
     CodePageDiv,
     CodePageDetails,
@@ -25,11 +24,13 @@ const CodePage = () => {
     const tokenData = decodeToken(localStorage.getItem('token'));
 
     React.useEffect(() => {
+        var load = true;
         getPost({
             id,
             setPost,
             setLoading,
-            loading
+            loading,
+            load
         });
     }, []);
 

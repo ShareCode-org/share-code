@@ -1,13 +1,18 @@
 import API from '../api/api';
 
-const getPost = ({ id, setPost, setLoading, loading }) => {
+const getPost = ({ id, setPost, setLoading, loading, load }) => {
     API.get('post/' + id)
         .then(res => {
-            document.title = `ShareCode | ${res.data.title}`;
-            setTimeout(() => {
+            if (load) {
+                document.title = `ShareCode | ${res.data.title}`;
+                setTimeout(() => {
+                    setPost(res.data);
+                    setLoading(!loading);
+                }, 500)
+            } else {
+                document.title = `ShareCode | ${res.data.title}`;
                 setPost(res.data);
-                setLoading(!loading);
-            }, 500)
+            }
         })
         .catch(() => window.location.href = `/404/post/${id}`)
 };

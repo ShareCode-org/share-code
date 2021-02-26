@@ -1,6 +1,6 @@
 import React from 'react';
 import addPost from '../../actions/addPost';
-import { Formik, Form, FastField } from 'formik';
+import { Formik, FastField } from 'formik';
 import * as Yup from 'yup';
 import { decodeToken } from 'react-jwt';
 import Modal from 'react-modal';

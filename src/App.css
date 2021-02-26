@@ -41,7 +41,6 @@ button:hover {
 input {
   font-size: 25px;
   border: solid blue 1px;
-  border-radius: 4px;
   color: #7a7aff;
   outline: none;
   padding-left: 4px;
@@ -51,7 +50,6 @@ input {
 textarea {
   font-size: 25px;
   border: solid blue 1px;
-  border-radius: 4px;
   color: #7a7aff;
   outline: none;
   width: 100%;

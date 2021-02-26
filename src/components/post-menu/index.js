@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 import { withStyles } from '@material-ui/core/styles';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { toast } from 'react-toastify';
@@ -43,8 +44,9 @@ const StyledMenuItem = withStyles(() => ({
   },
 }))(MenuItem);
 
-const PostMenu = ({ tokenData, post, deleteFunc }) => {
+const PostMenu = ({ id, tokenData, post, deleteFunc }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const history = useHistory();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -76,7 +78,7 @@ const PostMenu = ({ tokenData, post, deleteFunc }) => {
             '' : (
               tokenData.username === post.createdBy || tokenData.username === 'admin' ? (
                 <div>
-                  <StyledMenuItem>
+                  <StyledMenuItem onClick={() => history.push(`${post._id}/edit`)}>
                     <ListItemIcon>
                       <EditIcon fontSize="small" />
                     </ListItemIcon>
