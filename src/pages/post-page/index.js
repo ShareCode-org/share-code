@@ -28,9 +28,9 @@ const PostPage = () => {
                 isLogging ? (
                     posts.length ? (
                         <div>
-                            <SupCheckbox
+                            {/* <SupCheckbox
                                 onChange={SupGlobalFunc}
-                            />
+                            /> */}
                             <PostsDiv>
                                 {posts.map((post, index) => (
                                     <CodeCard
@@ -45,9 +45,9 @@ const PostPage = () => {
                         </div>
                     ) : (
                             <div>
-                                <SupCheckbox
+                                {/* <SupCheckbox
                                     onChange={SupGlobalFunc}
-                                />
+                                /> */}
                                 <PostForm />
                                 <PostMessage>There is no posts.</PostMessage>
                             </div>

@@ -1,4 +1,26 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const ToBottomSlide = keyframes`
+    0% {
+        transform: translateY(-15%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+`;
+
+const ToRightSlide = keyframes`
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+     100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+`;
 
 export const AboutContainer = styled.div`
     display: flex;
@@ -13,19 +35,21 @@ export const AboutContainer = styled.div`
 export const AboutDiv = styled.div``;
 
 export const AboutContentDiv = styled.div`
+    animation: 1s ease-out 0s 1 ${ToRightSlide};
     width: 40%;
-    height: 325px;
+    height: 300px;
 `;
 
 export const AboutTextTyperDiv = styled.div``;
 
 export const AboutImg = styled.img`
+    animation: 1s ease-out 0s 1 ${ToBottomSlide};
     position: relative;
     top: -25px;
     right: 50px;
     width: 600px;
     height: 600px;
-    z-index: -1;
+    z-index: 1;
 `;
 
 export const AboutH2 = styled.h2`
@@ -38,14 +62,8 @@ export const AboutP = styled.p`
     color: grey;
 `;
 
-export const AboutButton = styled.button`
-    margin-top: 2%;
-`;
 export const FeaturesContainer = styled.div`
-    margin-top: 4%;
-    margin-left: 4%;
-    margin-bottom: 8%;
-    margin-right: 4%;
+    margin: 4%;
 `;
 
 export const FeaturesDiv = styled.div`
@@ -57,7 +75,6 @@ export const FeaturesDiv = styled.div`
 `;
 
 export const FeatureDiv = styled.div`
-    margin: 10px;
     :hover {
         transform: scale(1.05);
         transition: transform 0.5s;
