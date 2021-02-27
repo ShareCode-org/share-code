@@ -85,8 +85,9 @@ export const FeatureDiv = styled.div`
 `;
 
 export const FeaturesTitle = styled.h1`
-    color: blue;
+    animation: 1s ease-out 0s 1 ${ToBottomSlide};
     text-align: center;
+    color: blue;
 `;
 
 export const FeaturesUnderline = styled.span`
