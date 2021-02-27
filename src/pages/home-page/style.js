@@ -2,7 +2,7 @@ import styled, { keyframes } from "styled-components";
 
 const ToBottomSlide = keyframes`
     0% {
-        transform: translateY(-15%);
+        transform: translateY(-25%);
         opacity: 0;
     }
     100% {
@@ -63,7 +63,10 @@ export const AboutP = styled.p`
 `;
 
 export const FeaturesContainer = styled.div`
+    position: relative;
+    top: -100px;
     margin: 4%;
+    animation: 1s ease-out 0s 1 ${ToBottomSlide};
 `;
 
 export const FeaturesDiv = styled.div`
