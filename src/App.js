@@ -5,6 +5,7 @@ import { UserContext } from './context/userContext';
 import Navbar from './components/navbar/index';
 import { ToastContainer } from 'react-toastify';
 import HomePage from './pages/home-page/index';
+import LeaderboardPage from './pages/leaderboard-page/index';
 import PostPage from './pages/post-page/index';
 import CodePage from './pages/code-page/index';
 import EditPage from './pages/edit-page/index';
@@ -42,6 +43,7 @@ const App = () => {
                     />
                     <Switch>
                         <Route exact path="/" component={HomePage} />
+                        <Route exact path="/leaderboard" component={LeaderboardPage} />
                         <Route exact path="/post" component={PostPage} />
                         <Route exact path={`/post/:id`} component={CodePage} />
                         <Route exact path={`/post/:id/edit`} component={EditPage} />

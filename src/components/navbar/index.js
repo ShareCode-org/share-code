@@ -26,6 +26,15 @@ const Navbar = () => {
                     </NavbarLi>
                     <NavbarLi>
                         <NavbarA
+                            to="/leaderboard"
+                            activeStyle={{
+                                color: "#a8a8a8"
+                            }}>
+                            Leaderboard
+                        </NavbarA>
+                    </NavbarLi>
+                    <NavbarLi>
+                        <NavbarA
                             to="/post"
                             activeStyle={{
                                 color: "#a8a8a8"
