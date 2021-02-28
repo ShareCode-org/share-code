@@ -1,11 +1,13 @@
 import React from 'react';
+import { UserContext } from '../../context/userContext';
 import Loader from '../../components/loader/index';
 import Leaderboard from '../../components/leaderboard/index';
 import getPosts from '../../actions/getPosts';
 import getUsers from '../../actions/getUsers';
-import { LeaderboardDivContainner, LeaderboardUl } from './style';
+import { LeaderboardDivContainner, LeaderboardUl, LeaderboardMessage } from './style';
 
 const LeaderboardPage = () => {
+    const { isLogging } = React.useContext(UserContext);
     const [posts, setPosts] = React.useState([]);
     const [users, setUsers] = React.useState([]);
     const [listOfUsers, setListOfUsers] = React.useState([]);
@@ -24,26 +26,30 @@ const LeaderboardPage = () => {
             })
         });
 
-        listOfUsers.sort(function(a , b) {
+        listOfUsers.sort(function (a, b) {
             return b.posts - a.posts;
         });
-        
+
     }, [users]);
 
     return (
         <div>
             {!loading ? (
-                <LeaderboardDivContainner>
-                    <LeaderboardUl>
-                        {listOfUsers.map((user, index) => (
-                            <Leaderboard
-                                Number={index}
-                                Username={user.username}
-                                postsNumber={user.posts}
-                            />
-                        ))}
-                    </LeaderboardUl>
-                </LeaderboardDivContainner>
+                isLogging ? (
+                    <LeaderboardDivContainner>
+                        <LeaderboardUl>
+                            {listOfUsers.map((user, index) => (
+                                <Leaderboard
+                                    Number={index}
+                                    Username={user.username}
+                                    postsNumber={user.posts}
+                                />
+                            ))}
+                        </LeaderboardUl>
+                    </LeaderboardDivContainner>
+                ) : (
+                        <LeaderboardMessage>You need to login in to see the leaderboard.</LeaderboardMessage>
+                    )
             ) : (
                     <div>
                         <Loader loading={loading} />

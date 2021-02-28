@@ -9,3 +9,9 @@ export const LeaderboardUl = styled.ul`
     list-style-type: none;
     font-size: 16px;
 `;
+
+export const LeaderboardMessage = styled.h1`
+  text-align: center;
+  position: relative;
+  top: 200px;
+`;

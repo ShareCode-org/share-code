@@ -1,10 +1,11 @@
 import React from 'react';
+import AccountSvg from '../../assests/account.svg';
 import { LeaderboardDiv, LeaderboardImg, LeaderboardPostNumber } from './style';
 
 const Leaderboard = ({ Number, Username, postsNumber }) => (
     <LeaderboardDiv>
         {Number}#
-        <LeaderboardImg src='https://www.flaticon.com/svg/vstatic/svg/1738/1738691.svg?token=exp=1614527449~hmac=579094d4c3e27c0f4cf5024e527f7b65' />
+        <LeaderboardImg src={AccountSvg} />
         {Username} <LeaderboardPostNumber>{postsNumber}</LeaderboardPostNumber>
     </LeaderboardDiv>
 );
