@@ -8,7 +8,7 @@ export const PostFormDiv = styled.div`
 `;
 
 export const PostFORM = styled(Form)`
-    padding: 30px;
+    padding: 25px;
 `;
 
 export const PostInput = styled(Field)`
