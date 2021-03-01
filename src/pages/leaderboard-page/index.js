@@ -4,7 +4,7 @@ import Loader from '../../components/loader/index';
 import Leaderboard from '../../components/leaderboard/index';
 import getPosts from '../../actions/getPosts';
 import getUsers from '../../actions/getUsers';
-import { LeaderboardDivContainner, LeaderboardUl, LeaderboardMessage } from './style';
+import { LeaderboardDivContainner, LeaderboardMessage } from './style';
 
 const LeaderboardPage = () => {
     const { isLogging } = React.useContext(UserContext);
@@ -14,9 +14,13 @@ const LeaderboardPage = () => {
     const [loading, setLoading] = React.useState(true);
 
     React.useEffect(() => {
-        var load = false;
-        getPosts({ setPosts, setLoading, loading, load });
-        getUsers({ setUsers, setLoading, loading });
+        if (isLogging) {
+            var load = false;
+            getPosts({ setPosts, setLoading, loading, load });
+            getUsers({ setUsers, setLoading, loading });
+        } else {
+            setLoading(false);
+        }
     }, []);
 
     React.useEffect(() => {

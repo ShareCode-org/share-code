@@ -16,8 +16,12 @@ const PostPage = () => {
     const [loading, setLoading] = React.useState(true);
 
     React.useEffect(() => {
-        var load = true;
-        getPosts({ setPosts, setLoading, loading, load });
+        if (isLogging) {
+            var load = true;
+            getPosts({ setPosts, setLoading, loading, load });
+        } else {
+            setLoading(false);
+        }
     }, []);
 
     const SupGlobalFunc = (e) => checkboxChange({ e, getPosts, setPosts, posts, setLoading, loading, tokenData });
