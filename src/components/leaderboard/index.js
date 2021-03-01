@@ -1,13 +1,13 @@
 import React from 'react';
 import AccountSvg from '../../assests/account.svg';
-import { LeaderboardDiv, LeaderboardImg, LeaderboardPostNumber } from './style';
+// import { LeaderboardDiv, LeaderboardPostNumber } from './style';
 
 const Leaderboard = ({ Number, Username, postsNumber }) => (
-    <LeaderboardDiv>
-        {Number}#
-        <LeaderboardImg src={AccountSvg} />
-        {Username} <LeaderboardPostNumber>{postsNumber}</LeaderboardPostNumber>
-    </LeaderboardDiv>
+    <tr>
+        <td>{Number}#</td>
+        <td>{Username}</td>
+        <td>{postsNumber}</td>
+    </tr>
 );
 
 export default Leaderboard;

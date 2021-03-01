@@ -5,9 +5,9 @@ export const LeaderboardDivContainner = styled.div`
     justify-content: center;
 `;
 
-export const LeaderboardUl = styled.ul`
-    list-style-type: none;
+export const LeaderboardUl = styled.div`
     font-size: 16px;
+    border-collapse: collapse;
 `;
 
 export const LeaderboardMessage = styled.h1`

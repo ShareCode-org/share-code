@@ -37,7 +37,12 @@ const LeaderboardPage = () => {
             {!loading ? (
                 isLogging ? (
                     <LeaderboardDivContainner>
-                        <LeaderboardUl>
+                        <table>
+                            <tr>
+                                <th>#</th>
+                                <th>Username</th>
+                                <th>Posts</th>
+                            </tr>
                             {listOfUsers.map((user, index) => (
                                 <Leaderboard
                                     Number={index}
@@ -45,7 +50,9 @@ const LeaderboardPage = () => {
                                     postsNumber={user.posts}
                                 />
                             ))}
-                        </LeaderboardUl>
+                        </table>
+
+
                     </LeaderboardDivContainner>
                 ) : (
                         <LeaderboardMessage>You need to login in to see the leaderboard.</LeaderboardMessage>
