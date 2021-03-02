@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import { toast } from 'react-toastify';
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
@@ -10,12 +10,6 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
-
-const useStyles = makeStyles(() => ({
-    red: {
-        color: 'red'
-    }
-}));
 
 const StyledMenu = withStyles({
     paper: {
@@ -94,15 +88,9 @@ const NavbarAccount = ({ isLogging, setIsLogging }) => {
                                 </ListItemIcon>
                                 <ListItemText primary="Profile" />
                             </StyledMenuItem>
-                            <StyledMenuItem
-                                className={classes.red}
-                                onClick={() => Logout()}
-                            >
+                            <StyledMenuItem onClick={() => Logout()}>
                                 <ListItemIcon>
-                                    <ExitToAppIcon
-                                        className={classes.red}
-                                        fontSize="small"
-                                    />
+                                    <ExitToAppIcon fontSize="small" />
                                 </ListItemIcon>
                                 <ListItemText primary="Logout" />
                             </StyledMenuItem>

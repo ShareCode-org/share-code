@@ -65,7 +65,7 @@ export const AboutP = styled.p`
 export const FeaturesContainer = styled.div`
     position: relative;
     top: -100px;
-    margin: 4%;
+    margin: 4% 4% 0% 4%;
     animation: 1s ease-out 0s 1 ${ToBottomSlide};
 `;
 
