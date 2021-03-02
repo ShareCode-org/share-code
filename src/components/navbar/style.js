@@ -10,6 +10,11 @@ const linkStyle = css`
         color: #a8a8a8;
         transition: all 0.3s ease 0.1s;
     }
+`;
+
+const LiStyle = css`
+    display: inline-block;
+    transition: all 0.3s ease 0.1s;
 `
 
 export const NavbarDiv = styled.div`
@@ -34,9 +39,12 @@ export const NavbarA = styled(NavLink)`${linkStyle}`;
 export const LogoutA = styled(Link)`${linkStyle}`;
 
 export const NavbarLi = styled.li`
-    display: inline-block;
+    ${LiStyle}
     padding: 10px 30px;
-    transition: all 0.3s ease 0.1s;
+`;
+
+export const AccountContainer = styled.li`
+    ${LiStyle}
 `;
 
 export const NavbarLogo = styled.h1`

@@ -1,6 +1,7 @@
 import React from 'react';
+import NavbarAccount from '../navbar-account/index';
 import { UserContext } from '../../context/userContext';
-import { NavbarDiv, NavbarLogo, NavbarUl, NavbarLi, NavbarA, LogoutA } from './style';
+import { NavbarDiv, NavbarLogo, NavbarUl, NavbarLi, AccountContainer, NavbarA, LogoutA } from './style';
 
 const Navbar = () => {
     const { isLogging, setIsLogging } = React.useContext(UserContext);
@@ -42,32 +43,12 @@ const Navbar = () => {
                             Post
                         </NavbarA>
                     </NavbarLi>
-                    {
-                        isLogging ? (
-                            <NavbarLi>
-                                <LogoutA
-                                    onClick={() => {
-                                        setIsLogging(false);
-                                        localStorage.setItem('token', '');
-                                        localStorage.setItem('isLogging', false);
-                                    }}
-                                >
-                                    Logout
-                             </LogoutA>
-                            </NavbarLi>
-                        ) : (
-                                <NavbarLi>
-                                    <NavbarA
-                                        to="/sign-up-and-sign-in"
-                                        activeStyle={{
-                                            color: "#a8a8a8"
-                                        }}
-                                    >
-                                        Sign in
-                             </NavbarA>
-                                </NavbarLi>
-                            )
-                    }
+                    <AccountContainer>
+                        <NavbarAccount
+                            isLogging={isLogging}
+                            setIsLogging={setIsLogging}
+                        />
+                    </AccountContainer>
                 </NavbarUl>
             </div>
         </NavbarDiv>

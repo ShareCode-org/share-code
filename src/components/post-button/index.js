@@ -4,7 +4,7 @@ import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import Tooltip from '@material-ui/core/Tooltip';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     fixed: {
         position: 'fixed',
         bottom: '25px',
@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
 
 const PostButton = ({ onClick }) => {
     const classes = useStyles();
+    
     return (
         <Tooltip
             title="Add post"
