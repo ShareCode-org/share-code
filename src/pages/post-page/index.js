@@ -10,13 +10,14 @@ import SupCheckbox from '../../components/sup-checkbox/index';
 import { PostsDiv, PostMessage } from './style';
 
 const PostPage = () => {
+    const LocalIsLogging = JSON.parse(localStorage.getItem('isLogging'));
     const [posts, setPosts] = React.useState([]);
     const { isLogging } = React.useContext(UserContext);
     const tokenData = decodeToken(localStorage.getItem('token'));
     const [loading, setLoading] = React.useState(true);
 
     React.useEffect(() => {
-        if (isLogging) {
+        if (LocalIsLogging) {
             var load = true;
             getPosts({ setPosts, setLoading, loading, load });
         } else {

@@ -7,6 +7,7 @@ import getUsers from '../../actions/getUsers';
 import { LeaderboardDivContainner, LeaderboardMessage } from './style';
 
 const LeaderboardPage = () => {
+    const LocalIsLogging = JSON.parse(localStorage.getItem('isLogging'));
     const { isLogging } = React.useContext(UserContext);
     const [posts, setPosts] = React.useState([]);
     const [users, setUsers] = React.useState([]);
@@ -14,7 +15,7 @@ const LeaderboardPage = () => {
     const [loading, setLoading] = React.useState(true);
 
     React.useEffect(() => {
-        if (isLogging) {
+        if (LocalIsLogging) {
             var load = false;
             getPosts({ setPosts, setLoading, loading, load });
             getUsers({ setUsers, setLoading, loading });
@@ -24,16 +25,19 @@ const LeaderboardPage = () => {
     }, []);
 
     React.useEffect(() => {
-        users.forEach(element => {
-            listOfUsers.push({
-                username: element.username, posts: posts.filter(post => post.createdBy === element.username).length
-            })
-        });
+        if (LocalIsLogging) {
+            users.forEach(element => {
+                listOfUsers.push({
+                    username: element.username, posts: posts.filter(post => post.createdBy === element.username).length
+                })
+            });
 
-        listOfUsers.sort(function (a, b) {
-            return b.posts - a.posts;
-        });
-
+            listOfUsers.sort(function (a, b) {
+                return b.posts - a.posts;
+            });
+        } else {
+            setLoading(false);
+        }
     }, [users]);
 
     return (
