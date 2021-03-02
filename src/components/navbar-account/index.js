@@ -43,7 +43,6 @@ const StyledMenuItem = withStyles(() => ({
 }))(MenuItem);
 
 const NavbarAccount = ({ isLogging, setIsLogging }) => {
-    const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const Logout = () => {
