@@ -45,7 +45,7 @@ export const NavbarLi = styled.li`
 
 export const AccountContainer = styled.li`
     ${LiStyle}
-    padding: 0px 30px;
+    padding: 0px 10px;
 `;
 
 export const NavbarLogo = styled.h1`
