@@ -1,7 +1,8 @@
 import API from '../api/api';
 import { toast } from 'react-toastify';
 
-const addPost = ({ values, resetForm }) => {
+const addPost = ({ values, setIsDisablad, resetForm }) => {
+    setIsDisablad(true);
     API.post('/post', {
         title: values.title,
         description: values.description,

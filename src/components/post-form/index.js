@@ -15,6 +15,7 @@ import {
 
 const PostForm = () => {
     const [IsOpen, setIsOpen] = React.useState(false);
+    const [IsDisablad, setIsDisablad] = React.useState(false);
     const tokenData = decodeToken(localStorage.getItem('token'));
 
     const AddPostSchema = Yup.object().shape({
@@ -65,6 +66,7 @@ const PostForm = () => {
                         onSubmit={(values, { resetForm }) => {
                             addPost({
                                 values,
+                                setIsDisablad,
                                 resetForm
                             });
                         }}
@@ -115,6 +117,7 @@ const PostForm = () => {
                                     <div>
                                         <button
                                             className='centred-button'
+                                            disabled={IsDisablad}
                                             type='submit'
                                         >
                                             Post
