@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const LeaderboardDivContainner = styled.div`
     display: flex;
     justify-content: center;
+    margin-bottom: 2%;
 `;
 
 export const LeaderboardUl = styled.div`
