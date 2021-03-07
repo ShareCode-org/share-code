@@ -1,4 +1,5 @@
 import React from 'react';
+import { decodeToken } from "react-jwt";
 import { withStyles } from '@material-ui/core/styles';
 import { toast } from 'react-toastify';
 import IconButton from '@material-ui/core/IconButton';
@@ -43,6 +44,7 @@ const StyledMenuItem = withStyles(() => ({
 }))(MenuItem);
 
 const NavbarAccount = ({ isLogging, setIsLogging }) => {
+    const tokenData = decodeToken(localStorage.getItem('token'));
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const Logout = () => {
@@ -81,7 +83,7 @@ const NavbarAccount = ({ isLogging, setIsLogging }) => {
                 {
                     isLogging ? (
                         <div>
-                            <StyledMenuItem>
+                            <StyledMenuItem onClick={() => window.location.href = `/profile/${tokenData.userId}`}>
                                 <ListItemIcon>
                                     <SupervisorAccountIcon fontSize="small" />
                                 </ListItemIcon>

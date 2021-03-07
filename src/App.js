@@ -9,6 +9,7 @@ import LeaderboardPage from './pages/leaderboard-page/index';
 import PostPage from './pages/post-page/index';
 import CodePage from './pages/code-page/index';
 import EditPage from './pages/edit-page/index';
+import ProfilePage from './pages/profile-page/index';
 import SignUpAndSignIn from './pages/sign-up-and-sign-in/index';
 import NotFound from './pages/404-page/index';
 import 'react-toastify/dist/ReactToastify.css';
@@ -47,6 +48,7 @@ const App = () => {
                         <Route exact path="/post" component={PostPage} />
                         <Route exact path={`/post/:id`} component={CodePage} />
                         <Route exact path={`/post/:id/edit`} component={EditPage} />
+                        <Route exact path={`/profile/:id`} component={ProfilePage} />
                         <Route exact path="/sign-up-and-sign-in">
                             {
                                 isLogging ? (

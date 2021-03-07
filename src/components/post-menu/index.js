@@ -76,7 +76,7 @@ const PostMenu = ({ id, tokenData, post, deleteFunc }) => {
         {
           tokenData === null ?
             '' : (
-              tokenData.username === post.createdBy || tokenData.role === 'admin' ? (
+              tokenData.username === post.createdBy || tokenData.role.toLowerCase() === 'admin' ? (
                 <div>
                   <StyledMenuItem onClick={() => history.push(`${post._id}/edit`)}>
                     <ListItemIcon>
