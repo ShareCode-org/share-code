@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams, Prompt } from 'react-router';
 import getUser from '../../actions/getUser';
 import Loader from '../../components/loader/index';
+import AccountSvg from '../../assests/account.svg';
 import {
     ProfileDiv,
     ProfileInfoDiv,
@@ -32,7 +33,7 @@ const ProfilePage = () => {
                 <ProfileDiv>
                     <ProfileInfoDiv>
                         <div>
-                            <ProfilePicture src="https://www.flaticon.com/svg/vstatic/svg/1738/1738691.svg?token=exp=1615138554~hmac=1c878a71748fbb5e0a4a8f8845e434d8" />
+                            <ProfilePicture src={AccountSvg} />
                         </div>
                         <div>
                             <ProfileUsername>{user.username}</ProfileUsername>
