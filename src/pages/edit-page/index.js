@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router';
+import { useParams, Prompt } from 'react-router';
 import getPost from '../../actions/getPost';
 import editPost from '../../actions/editPost';
 import { EditPageDiv, EditPageBottom, EditInput, EditTextArea, EditButton, SaveButton } from './style';
@@ -19,6 +19,12 @@ const EditPage = () => {
 
     return (
         <EditPageDiv>
+            <Prompt
+                message={() => {
+                    ""
+                    document.title = 'ShareCode'
+                }}
+            />
             <div>
                 <EditInput
                     placeholder='Title'
