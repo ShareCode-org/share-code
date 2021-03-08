@@ -73,7 +73,7 @@ const CodePage = () => {
                     >
                         {`${post.code}`}
                     </CodePageCode>
-                    <CodeSpan>By <span style={{cursor: 'pointer'}} onClick={() => window.location.href = `/profile/${user[0]._id}`}>{post.createdBy}</span></CodeSpan>
+                    <CodeSpan>By <span style={{ cursor: 'pointer' }} onClick={() => window.location.href = `/profile/${user[0]._id}`}>{post.createdBy}</span></CodeSpan>
                 </CodePageDiv>
             ) : (
                 <Loader loading={loading} />

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams, Prompt } from 'react-router';
+import { decodeToken } from "react-jwt";
 import getUser from '../../actions/getUser';
 import Loader from '../../components/loader/index';
 import AccountSvg from '../../assests/account.svg';
@@ -11,13 +12,15 @@ import {
     ProfileStatsDiv,
     ProfileSpan,
     ProfileDescription,
-    ProfileFollow
+    ProfileButton
 } from './style';
 
 const ProfilePage = () => {
     const { id } = useParams();
+
     const [loading, setLoading] = React.useState(true);
     const [user, setUser] = React.useState({});
+    const tokenData = decodeToken(localStorage.getItem('token'));
 
     React.useEffect(() => getUser({ id, setUser, setLoading, loading }), []);
 
@@ -46,7 +49,16 @@ const ProfilePage = () => {
                             <ProfileDescription>
                                 {user.bio || "The bio is empty."}
                             </ProfileDescription>
-                            <ProfileFollow>Follow</ProfileFollow>
+                            {
+                                tokenData === null ?
+                                    '' : (
+                                        tokenData.username === user.username ? (
+                                            <ProfileButton>Edit</ProfileButton>
+                                        ) : (
+                                            <ProfileButton>Follow</ProfileButton>
+                                        )
+                                    )
+                            }
                         </div>
                     </ProfileInfoDiv>
                 </ProfileDiv>

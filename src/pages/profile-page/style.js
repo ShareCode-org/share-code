@@ -44,6 +44,6 @@ export const ProfileDescription = styled.p`
   margin: 10px;
 `;
 
-export const ProfileFollow = styled.button`
+export const ProfileButton = styled.button`
   margin: 5px 10px;
 `;
