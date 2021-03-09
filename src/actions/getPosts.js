@@ -7,7 +7,7 @@ const getPosts = ({ setPosts, setLoading, loading, load }) => {
                 setTimeout(() => {
                     setPosts(res.data);
                     setLoading(!loading);
-                }, 500)
+                }, 500);
             } else {
                 setPosts(res.data);
             }

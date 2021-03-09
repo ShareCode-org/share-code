@@ -1,7 +1,7 @@
 import React from 'react';
 import { UserContext } from '../../context/userContext';
 import Loader from '../../components/loader/index';
-import Leaderboard from '../../components/leaderboard/index';
+import LeaderboardItem from '../../components/leaderboard-item/index';
 import getUsers from '../../actions/getUsers';
 import { LeaderboardDivContainner, LeaderboardMessage } from './style';
 
@@ -14,7 +14,6 @@ const LeaderboardPage = () => {
 
     React.useEffect(() => {
         if (LocalIsLogging) {
-            var load = false;
             getUsers({ setUsers, setLoading, loading });
         } else {
             setLoading(false);
@@ -25,7 +24,9 @@ const LeaderboardPage = () => {
         if (LocalIsLogging) {
             users.forEach(element => {
                 listOfUsers.push({
-                    username: element.username, posts: element.posts.length
+                    id: element._id,
+                    username: element.username,
+                    posts: element.posts.length
                 })
             });
 
@@ -49,7 +50,9 @@ const LeaderboardPage = () => {
                                 <th>Posts</th>
                             </tr>
                             {listOfUsers.map((user, index) => (
-                                <Leaderboard
+                                <LeaderboardItem
+                                    key={index}
+                                    id={user.id}
                                     Number={index}
                                     Username={user.username}
                                     postsNumber={user.posts}
@@ -60,13 +63,13 @@ const LeaderboardPage = () => {
 
                     </LeaderboardDivContainner>
                 ) : (
-                        <LeaderboardMessage>You need to login in to see the leaderboard.</LeaderboardMessage>
-                    )
+                    <LeaderboardMessage>You need to login in to see the leaderboard.</LeaderboardMessage>
+                )
             ) : (
-                    <div>
-                        <Loader loading={loading} />
-                    </div>
-                )}
+                <div>
+                    <Loader loading={loading} />
+                </div>
+            )}
         </div>
     )
 };
