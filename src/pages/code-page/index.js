@@ -42,7 +42,6 @@ const CodePage = () => {
     React.useEffect(() => {
         const filtredUsers = users.filter(user => user.username === post.createdBy);
         setUser(filtredUsers);
-        console.log(filtredUsers)
     }, [users])
 
     return (
