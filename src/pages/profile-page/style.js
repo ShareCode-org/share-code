@@ -36,6 +36,7 @@ export const ProfileStatsDiv = styled.div`
 `;
 
 export const ProfileSpan = styled.span`
+  cursor: pointer;
   color: grey;
   margin: 10px;
 `;

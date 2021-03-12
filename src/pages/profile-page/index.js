@@ -43,8 +43,8 @@ const ProfilePage = () => {
                             <ProfileSpan>{user.role || "Member"}</ProfileSpan>
                             <ProfileStatsDiv>
                                 <ProfileSpan>{user.posts.length} posts</ProfileSpan>
-                                <ProfileSpan>0 followers</ProfileSpan>
-                                <ProfileSpan>0 following</ProfileSpan>
+                                <ProfileSpan>{user.followers.length} followers</ProfileSpan>
+                                <ProfileSpan>{user.following.length} following</ProfileSpan>
                             </ProfileStatsDiv>
                             <ProfileDescription>
                                 {user.bio || "The bio is empty."}
