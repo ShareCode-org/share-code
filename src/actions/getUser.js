@@ -1,13 +1,16 @@
 import API from '../api/api';
 
-const getUser = ({ id, setUser, setLoading, loading }) => {
+const getUser = ({ id, setUser, load, setLoading, loading }) => {
     API.get(`/user/${id}`)
         .then(res => {
             document.title = `ShareCode | ${res.data.username}`;
-            setTimeout(() => {
+            if (load) {
+                setTimeout(() => {
+                    setUser(res.data);
+                    setLoading(!loading);
+                }, 500)
+            } else 
                 setUser(res.data);
-                setLoading(!loading);
-            }, 500)
         })
         .catch(err => err)
 };
