@@ -4,10 +4,8 @@ const getPosts = ({ setPosts, setLoading, loading, load }) => {
     API.get('/post')
         .then(res => {
             if (load) {
-                setTimeout(() => {
-                    setPosts(res.data);
-                    setLoading(!loading);
-                }, 500);
+                setPosts(res.data);
+                setLoading(false);
             } else {
                 setPosts(res.data);
             }

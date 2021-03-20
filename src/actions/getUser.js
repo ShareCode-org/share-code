@@ -5,14 +5,12 @@ const getUser = ({ id, setUser, load, setLoading, loading }) => {
         .then(res => {
             document.title = `ShareCode | ${res.data.username}`;
             if (load) {
-                setTimeout(() => {
-                    setUser(res.data);
-                    setLoading(!loading);
-                }, 500)
-            } else 
+                setUser(res.data);
+                setLoading(false);
+            } else
                 setUser(res.data);
         })
-        .catch(err => err)
+        .catch(() => setLoading(false))
 };
 
 export default getUser;

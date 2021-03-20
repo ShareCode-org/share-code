@@ -5,10 +5,8 @@ const getPost = ({ id, setPost, setLoading, loading, load }) => {
         .then(res => {
             if (load) {
                 document.title = `ShareCode | ${res.data.title}`;
-                setTimeout(() => {
-                    setPost(res.data);
-                    setLoading(!loading);
-                }, 500)
+                setPost(res.data);
+                setLoading(false);
             } else {
                 document.title = `ShareCode | ${res.data.title}`;
                 setPost(res.data);
