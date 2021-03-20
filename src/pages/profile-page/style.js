@@ -44,6 +44,7 @@ export const ProfileSpan = styled.span`
 export const ProfileBio = styled.p`
   margin: 10px 0px;
   max-width: 350px;
+  line-height: 20px;
 `;
 
 export const ProfileBioInput = styled.textarea`
