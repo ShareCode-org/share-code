@@ -1,6 +1,6 @@
 import React from 'react';
 import API from '../../api/api';
-import { useParams, Prompt } from 'react-router';
+import { useParams, Prompt, Redirect } from 'react-router';
 import { decodeToken } from "react-jwt";
 import getUser from '../../actions/getUser';
 import followUser from '../../actions/followUser';
@@ -124,7 +124,6 @@ const ProfilePage = () => {
                     <Loader loading={loading} />
                 </div>
             )}
-
         </div>
     )
 };

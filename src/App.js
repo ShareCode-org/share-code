@@ -48,15 +48,7 @@ const App = () => {
                         <Route exact path="/post" component={PostPage} />
                         <Route exact path={`/post/:id`} component={CodePage} />
                         <Route exact path={`/post/:id/edit`} component={EditPage} />
-                        <Route exact path={`/profile/:id`}>
-                            {
-                                isLogging ? (
-                                    <ProfilePage />
-                                ) : (
-                                    <Redirect to="/" />
-                                )
-                            }
-                        </Route>
+                        <Route exact path={`/profile/:id`} component={ProfilePage} />
                         <Route exact path="/sign-up-and-sign-in">
                             {
                                 isLogging ? (
