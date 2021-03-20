@@ -15,6 +15,10 @@ export const PostInput = styled(Field)`
   width: 100%;
 `;
 
+export const PostTextArea = styled(PostInput)`
+    height: 200px;
+`;
+
 export const PostCaptcha = styled(ReCAPTCHA)`
     display: flex;
     justify-content: center;

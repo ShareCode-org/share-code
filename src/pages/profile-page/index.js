@@ -5,6 +5,7 @@ import { decodeToken } from "react-jwt";
 import getUser from '../../actions/getUser';
 import followUser from '../../actions/followUser';
 import unFollowUser from '../../actions/unFollowUser';
+import editBio from '../../actions/editBio';
 import Loader from '../../components/loader/index';
 import AccountSvg from '../../assests/account.svg';
 import {
@@ -14,8 +15,10 @@ import {
     ProfileUsername,
     ProfileStatsDiv,
     ProfileSpan,
-    ProfileDescription,
-    ProfileButton
+    ProfileBio,
+    ProfileBioInput,
+    ProfileButton,
+    SaveButton
 } from './style';
 
 const ProfilePage = () => {
@@ -24,6 +27,7 @@ const ProfilePage = () => {
     const tokenData = decodeToken(localStorage.getItem('token'));
     const [loading, setLoading] = React.useState(true);
     const [isFollowing, setIsFollowing] = React.useState();
+    const [isEditing, setIsEditing] = React.useState(false);
     const [user, setUser] = React.useState({});
     const [me, setMe] = React.useState({});
 
@@ -66,14 +70,33 @@ const ProfilePage = () => {
                                 <ProfileSpan>{user.followers.length} followers</ProfileSpan>
                                 <ProfileSpan>{user.following.length} following</ProfileSpan>
                             </ProfileStatsDiv>
-                            <ProfileDescription>
-                                {user.bio || "The bio is empty."}
-                            </ProfileDescription>
+                            {isEditing ? ''
+                                : (
+                                    <ProfileBio>
+                                        {user.bio || "The bio is empty."}
+                                    </ProfileBio>
+                                )
+                            }
                             {
                                 tokenData === null ?
                                     '' : (
                                         tokenData.username === user.username ? (
-                                            <ProfileButton>Edit</ProfileButton>
+                                            isEditing ? (
+                                                <div>
+                                                    <ProfileBioInput
+                                                        placeholder='The bio is empty.'
+                                                        maxlength='32'
+                                                        value={user.bio}
+                                                        onChange={(e) => setUser({ ...user, bio: e.target.value })}
+                                                    />
+                                                    <div>
+                                                        <ProfileButton onClick={() => window.location.href = window.location.href}>Cancel</ProfileButton>
+                                                        <SaveButton onClick={() => editBio({ id, user })}>Save</SaveButton>
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                <ProfileButton onClick={() => setIsEditing(true)}>Edit</ProfileButton>
+                                            )
                                         ) : (
                                             <div>
                                                 {isFollowing ? (

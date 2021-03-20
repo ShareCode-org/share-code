@@ -41,10 +41,26 @@ export const ProfileSpan = styled.span`
   margin: 10px;
 `;
 
-export const ProfileDescription = styled.p`
-  margin: 10px;
+export const ProfileBio = styled.p`
+  margin: 10px 0px;
+  max-width: 350px;
+`;
+
+export const ProfileBioInput = styled.textarea`
+  width: 100%;
+  height: 80px;
+  margin: 20px 0px 0px 0px;
 `;
 
 export const ProfileButton = styled.button`
   margin: 5px 10px;
+`;
+
+export const SaveButton = styled(ProfileButton)`
+    margin: 10px;
+    color: rgba(0, 0, 0, 0.87);
+    background-color: #e0e0e0;
+    :hover {
+        background: lightgrey;
+    }
 `;

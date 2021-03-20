@@ -9,6 +9,7 @@ import {
     PostFormDiv,
     PostFORM,
     PostInput,
+    PostTextArea,
     PostCaptcha,
     ErrorSpan
 } from './style';
@@ -94,7 +95,7 @@ const PostForm = () => {
                                     <ErrorSpan>{errors.description}</ErrorSpan>
                                 ) : null}
                                 <div>
-                                    <PostInput
+                                    <PostTextArea
                                         component='textarea'
                                         name='code'
                                         type='code'
