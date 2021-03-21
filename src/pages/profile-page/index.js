@@ -1,15 +1,18 @@
 import React from 'react';
 import API from '../../api/api';
-import { useParams, Prompt, Redirect } from 'react-router';
+import { useParams, Prompt } from 'react-router';
 import { decodeToken } from "react-jwt";
 import getUser from '../../actions/getUser';
 import followUser from '../../actions/followUser';
 import unFollowUser from '../../actions/unFollowUser';
 import editBio from '../../actions/editBio';
 import Loader from '../../components/loader/index';
+import ProfileModale from '../../components/profile-modal/index';
+import CodeCard from '../../components/code-card/index';
 import AccountSvg from '../../assests/account.svg';
 import {
     ProfileDiv,
+    ProfilesDiv,
     ProfileInfoDiv,
     ProfilePicture,
     ProfileUsername,
@@ -18,12 +21,18 @@ import {
     ProfileBio,
     ProfileBioInput,
     ProfileButton,
-    SaveButton
+    SaveButton,
+    ProfileMessage
 } from './style';
 
 const ProfilePage = () => {
     const { id } = useParams();
 
+    const [modals, setModals] = React.useState({
+        postsModal: false,
+        followersModal: false,
+        followingModal: false
+    });
     const tokenData = decodeToken(localStorage.getItem('token'));
     const [loading, setLoading] = React.useState(true);
     const [isFollowing, setIsFollowing] = React.useState();
@@ -58,6 +67,66 @@ const ProfilePage = () => {
             />
             {!loading ? (
                 <ProfileDiv>
+                    <ProfileModale
+                        Content={
+                            <div>
+                                {user.posts.length ? (
+                                    user.posts.map((post, index) => (
+                                        <CodeCard
+                                            key={index}
+                                            title={post.title}
+                                            description={post.description}
+                                            id={post._id}
+                                        />
+                                    ))
+                                ) : (
+                                    <ProfileMessage>There is no posts.</ProfileMessage>
+                                )}
+                            </div>
+                        }
+                        modalIsOpen={modals.postsModal}
+                        setIsOpen={setModals}
+                    />
+                    <ProfileModale
+                        Content={
+                            <div>
+                                {user.followers.length ? (
+                                    user.followers.map((user, index) => (
+                                        <ProfilesDiv key={index}>
+                                            <ProfilePicture src={AccountSvg} />
+                                            <div>
+                                                <h1 style={{ marginLeft: '10px', cursor: 'pointer' }}>{user}</h1>
+                                            </div>
+                                        </ProfilesDiv>
+                                    ))
+                                ) : (
+                                    <ProfileMessage>There is no followers.</ProfileMessage>
+                                )}
+                            </div>
+                        }
+                        modalIsOpen={modals.followersModal}
+                        setIsOpen={setModals}
+                    />
+                    <ProfileModale
+                        Content={
+                            <div>
+                                {user.following.length ? (
+                                    user.following.map((user, index) => (
+                                        <ProfilesDiv key={index}>
+                                            <ProfilePicture src={AccountSvg} />
+                                            <div>
+                                                <h1 style={{ marginLeft: '10px', cursor: 'pointer' }}>{user}</h1>
+                                            </div>
+                                        </ProfilesDiv>
+                                    ))
+                                ) : (
+                                    <ProfileMessage>There is no following.</ProfileMessage>
+                                )}
+                            </div>
+                        }
+                        modalIsOpen={modals.followingModal}
+                        setIsOpen={setModals}
+                    />
                     <ProfileInfoDiv>
                         <div>
                             <ProfilePicture src={AccountSvg} />
@@ -66,9 +135,9 @@ const ProfilePage = () => {
                             <ProfileUsername>{user.username}</ProfileUsername>
                             <ProfileSpan>{user.role || "Member"}</ProfileSpan>
                             <ProfileStatsDiv>
-                                <ProfileSpan>{user.posts.length} posts</ProfileSpan>
-                                <ProfileSpan>{user.followers.length} followers</ProfileSpan>
-                                <ProfileSpan>{user.following.length} following</ProfileSpan>
+                                <ProfileSpan onClick={() => setModals({ ...modals, postsModal: true })}>{user.posts.length} posts</ProfileSpan>
+                                <ProfileSpan onClick={() => setModals({ ...modals, followersModal: true })}>{user.followers.length} followers</ProfileSpan>
+                                <ProfileSpan onClick={() => setModals({ ...modals, followingModal: true })}>{user.following.length} following</ProfileSpan>
                             </ProfileStatsDiv>
                             {isEditing ? ''
                                 : (
@@ -124,6 +193,7 @@ const ProfilePage = () => {
                     <Loader loading={loading} />
                 </div>
             )}
+
         </div>
     )
 };

@@ -8,6 +8,12 @@ export const ProfileDiv = styled.div`
     top: 60px;
 `;
 
+export const ProfilesDiv = styled.div`
+    display: flex;
+    align-items: center;
+    margin: 10px 0px 10px 0px; 
+`;
+
 export const ProfileInfoDiv = styled.div`
     display: flex;
     flex-direction: column;
@@ -64,4 +70,10 @@ export const SaveButton = styled(ProfileButton)`
     :hover {
         background: lightgrey;
     }
+`;
+
+export const ProfileMessage = styled.h1`
+  text-align: center;
+  position: relative;
+  top: 200px;
 `;
