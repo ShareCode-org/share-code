@@ -50,11 +50,12 @@ const ProfilePage = () => {
 
     React.useEffect(() => {
         let followers = user.followers || [];
-        if (followers.includes(tokenData.username)) {
-            setIsFollowing(true);
-        } else {
-            setIsFollowing(false);
-        }
+        followers.forEach(element => {
+            if (element._id === tokenData.userId, element.username === tokenData.username)
+                setIsFollowing(true);
+            else
+                setIsFollowing(false);
+        });
     }, [user]);
 
     return (
@@ -95,7 +96,7 @@ const ProfilePage = () => {
                                         <ProfilesDiv key={index}>
                                             <ProfilePicture src={AccountSvg} />
                                             <div>
-                                                <h1 style={{ marginLeft: '10px', cursor: 'pointer' }}>{user}</h1>
+                                                <h1 style={{ marginLeft: '10px', cursor: 'pointer' }}>{user.username}</h1>
                                             </div>
                                         </ProfilesDiv>
                                     ))
@@ -115,7 +116,7 @@ const ProfilePage = () => {
                                         <ProfilesDiv key={index}>
                                             <ProfilePicture src={AccountSvg} />
                                             <div>
-                                                <h1 style={{ marginLeft: '10px', cursor: 'pointer' }}>{user}</h1>
+                                                <h1 style={{ marginLeft: '10px', cursor: 'pointer' }}>{user.username}</h1>
                                             </div>
                                         </ProfilesDiv>
                                     ))
