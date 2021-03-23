@@ -96,7 +96,12 @@ const ProfilePage = () => {
                                         <ProfilesDiv key={index}>
                                             <ProfilePicture src={AccountSvg} />
                                             <div>
-                                                <h1 style={{ marginLeft: '10px', cursor: 'pointer' }}>{user.username}</h1>
+                                                <h1
+                                                    style={{ marginLeft: '10px', cursor: 'pointer' }}
+                                                    onClick={() => window.location.href = `/profile/${user._id}`}
+                                                >
+                                                    {user.username}
+                                                </h1>
                                             </div>
                                         </ProfilesDiv>
                                     ))
@@ -116,7 +121,12 @@ const ProfilePage = () => {
                                         <ProfilesDiv key={index}>
                                             <ProfilePicture src={AccountSvg} />
                                             <div>
-                                                <h1 style={{ marginLeft: '10px', cursor: 'pointer' }}>{user.username}</h1>
+                                                <h1
+                                                    style={{ marginLeft: '10px', cursor: 'pointer' }}
+                                                    onClick={() => window.location.href = `/profile/${user._id}`}
+                                                >
+                                                    {user.username}
+                                                </h1>
                                             </div>
                                         </ProfilesDiv>
                                     ))
