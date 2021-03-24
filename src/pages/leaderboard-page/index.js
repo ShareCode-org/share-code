@@ -1,5 +1,4 @@
 import React from 'react';
-import { UserContext } from '../../context/userContext';
 import Loader from '../../components/loader/index';
 import LeaderboardItem from '../../components/leaderboard-item/index';
 import getUsers from '../../actions/getUsers';
@@ -7,7 +6,6 @@ import { LeaderboardDivContainner, LeaderboardMessage } from './style';
 
 const LeaderboardPage = () => {
     const LocalIsLogging = JSON.parse(localStorage.getItem('isLogging'));
-    const { isLogging } = React.useContext(UserContext);
     const [users, setUsers] = React.useState([]);
     const [listOfUsers, setListOfUsers] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
@@ -26,13 +24,18 @@ const LeaderboardPage = () => {
                 listOfUsers.push({
                     id: element._id,
                     username: element.username,
-                    posts: element.posts.length
+                    posts: element.posts,
+                    followers: element.followers
                 })
             });
 
             listOfUsers.sort(function (a, b) {
-                return b.posts - a.posts;
+                let ResultA = a.posts.length + a.followers.length;
+                let ResultB = b.posts.length + b.followers.length;
+
+                return ResultB - ResultA;
             });
+            
         } else {
             setLoading(false);
         }
@@ -41,13 +44,14 @@ const LeaderboardPage = () => {
     return (
         <div>
             {!loading ? (
-                isLogging ? (
+                LocalIsLogging ? (
                     <LeaderboardDivContainner>
                         <table>
                             <tr>
                                 <th>#</th>
                                 <th>Username</th>
                                 <th>Posts</th>
+                                <th>Followers</th>
                             </tr>
                             {listOfUsers.map((user, index) => (
                                 <LeaderboardItem
@@ -55,7 +59,8 @@ const LeaderboardPage = () => {
                                     id={user.id}
                                     Number={index}
                                     Username={user.username}
-                                    postsNumber={user.posts}
+                                    postsNumber={user.posts.length}
+                                    followersNumber={user.followers.length}
                                 />
                             ))}
                         </table>
