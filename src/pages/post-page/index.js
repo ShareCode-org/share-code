@@ -1,6 +1,7 @@
 import React from 'react';
 import { UserContext } from '../../context/userContext';
 import { decodeToken } from "react-jwt";
+import { toast } from 'react-toastify';
 import getPosts from '../../actions/getPosts';
 import checkboxChange from '../../actions/checkboxChange';
 import Loader from '../../components/loader/index';
@@ -19,7 +20,9 @@ const PostPage = () => {
     React.useEffect(() => {
         if (LocalIsLogging) {
             var load = true;
+            toast.warn('Posts are reseted');
             getPosts({ setPosts, setLoading, loading, load });
+
         } else {
             setLoading(false);
         }
