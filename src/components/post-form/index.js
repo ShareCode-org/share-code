@@ -60,7 +60,7 @@ const PostForm = () => {
                             title: '',
                             description: '',
                             code: '',
-                            createdBy: tokenData.username,
+                            createdBy: { _id: tokenData.userId, username: tokenData.username },
                             recaptcha: ''
                         }}
                         validationSchema={AddPostSchema}

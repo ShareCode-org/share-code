@@ -12,7 +12,7 @@ const getPost = ({ id, setPost, setLoading, loading, load }) => {
                 setPost(res.data);
             }
         })
-        .catch(() => window.location.href = `/404/post/${id}`)
+        // .catch(() => window.location.href = `/404/post/${id}`)
 };
 
 export default getPost;

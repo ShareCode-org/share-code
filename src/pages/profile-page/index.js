@@ -56,6 +56,7 @@ const ProfilePage = () => {
             else
                 setIsFollowing(false);
         });
+        console.log(user)
     }, [user]);
 
     return (

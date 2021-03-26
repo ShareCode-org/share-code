@@ -1,7 +1,6 @@
 import React from 'react';
 import { useParams, Prompt } from 'react-router';
 import getPost from '../../actions/getPost';
-import getUsers from '../../actions/getUsers';
 import deletePost from '../../actions/deletePost';
 import Loader from '../../components/loader/index';
 import PostMenu from '../../components/post-menu/index';
@@ -21,8 +20,6 @@ const CodePage = () => {
     const { id } = useParams();
 
     const [post, setPost] = React.useState({});
-    const [users, setUsers] = React.useState([]);
-    const [user, setUser] = React.useState({});
     const [loading, setLoading] = React.useState(true);
     const tokenData = decodeToken(localStorage.getItem('token'));
 
@@ -35,14 +32,7 @@ const CodePage = () => {
             loading,
             load
         });
-        getUsers({ setUsers, setLoading, loading });
     }, []);
-
-    // getting the user who posted
-    React.useEffect(() => {
-        const filtredUsers = users.filter(user => user.username === post.createdBy);
-        setUser(filtredUsers);
-    }, [users])
 
     return (
         <div>
@@ -72,7 +62,7 @@ const CodePage = () => {
                     >
                         {`${post.code}`}
                     </CodePageCode>
-                    <CodeSpan>By <span style={{ cursor: 'pointer' }} onClick={() => window.location.href = `/profile/${user[0]._id}`}>{post.createdBy}</span></CodeSpan>
+                    <CodeSpan>By <span style={{ cursor: 'pointer' }} onClick={() => window.location.href = `/profile/${post.createdBy._id}`}>{post.createdBy.username}</span></CodeSpan>
                 </CodePageDiv>
             ) : (
                 <Loader loading={loading} />
