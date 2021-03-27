@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import { withStyles } from '@material-ui/core/styles';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
@@ -45,7 +45,7 @@ const StyledMenuItem = withStyles(() => ({
 }))(MenuItem);
 
 const PostMenu = ({ id, tokenData, post, deleteFunc }) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
   const history = useHistory();
 
   const handleClick = (event) => {

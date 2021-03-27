@@ -1,6 +1,6 @@
 import API from '../api/api';
 
-const getUsers = ({ setUsers, setLoading, loading }) => {
+const getUsers = ({ setUsers, setLoading }) => {
     API.get('/user')
         .then(res => {
             setUsers(res.data);

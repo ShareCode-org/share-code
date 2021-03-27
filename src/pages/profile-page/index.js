@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import API from '../../api/api';
 import { useParams, Prompt } from 'react-router';
 import { decodeToken } from "react-jwt";
@@ -28,19 +28,19 @@ import {
 const ProfilePage = () => {
     const { id } = useParams();
 
-    const [modals, setModals] = React.useState({
+    const [modals, setModals] = useState({
         postsModal: false,
         followersModal: false,
         followingModal: false
     });
     const tokenData = decodeToken(localStorage.getItem('token'));
-    const [loading, setLoading] = React.useState(true);
-    const [isFollowing, setIsFollowing] = React.useState();
-    const [isEditing, setIsEditing] = React.useState(false);
-    const [user, setUser] = React.useState({});
-    const [me, setMe] = React.useState({});
+    const [loading, setLoading] = useState(true);
+    const [isFollowing, setIsFollowing] = useState();
+    const [isEditing, setIsEditing] = useState(false);
+    const [user, setUser] = useState({});
+    const [me, setMe] = useState({});
 
-    React.useEffect(() => {
+    useEffect(() => {
         let load = true;
         getUser({ id, setUser, load, setLoading, loading })
         API.get(`/user/${tokenData.userId}`)
@@ -48,7 +48,7 @@ const ProfilePage = () => {
             .catch(err => err)
     }, []);
 
-    React.useEffect(() => {
+    useEffect(() => {
         let followers = user.followers || [];
         followers.forEach(element => {
             if (element._id === tokenData.userId, element.username === tokenData.username)

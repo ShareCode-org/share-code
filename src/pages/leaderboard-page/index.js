@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Loader from '../../components/loader/index';
 import LeaderboardItem from '../../components/leaderboard-item/index';
 import getUsers from '../../actions/getUsers';
@@ -6,11 +6,11 @@ import { LeaderboardDivContainner, LeaderboardMessage } from './style';
 
 const LeaderboardPage = () => {
     const LocalIsLogging = JSON.parse(localStorage.getItem('isLogging'));
-    const [users, setUsers] = React.useState([]);
-    const [listOfUsers, setListOfUsers] = React.useState([]);
-    const [loading, setLoading] = React.useState(true);
+    const [users, setUsers] = useState([]);
+    const [listOfUsers, setListOfUsers] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (LocalIsLogging) {
             getUsers({ setUsers, setLoading, loading });
         } else {
@@ -18,7 +18,7 @@ const LeaderboardPage = () => {
         }
     }, []);
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (LocalIsLogging) {
             users.forEach(element => {
                 listOfUsers.push({

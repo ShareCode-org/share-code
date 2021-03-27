@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../../context/userContext';
 import { decodeToken } from "react-jwt";
-import { toast } from 'react-toastify';
 import getPosts from '../../actions/getPosts';
 import checkboxChange from '../../actions/checkboxChange';
 import Loader from '../../components/loader/index';
@@ -12,15 +11,14 @@ import { PostsDiv, PostMessage } from './style';
 
 const PostPage = () => {
     const LocalIsLogging = JSON.parse(localStorage.getItem('isLogging'));
-    const [posts, setPosts] = React.useState([]);
-    const { isLogging } = React.useContext(UserContext);
+    const [posts, setPosts] = useState([]);
+    const { isLogging } = useContext(UserContext);
     const tokenData = decodeToken(localStorage.getItem('token'));
-    const [loading, setLoading] = React.useState(true);
+    const [loading, setLoading] = useState(true);
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (LocalIsLogging) {
             var load = true;
-            toast.warn('Posts are reseted');
             getPosts({ setPosts, setLoading, loading, load });
 
         } else {

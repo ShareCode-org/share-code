@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Prompt } from 'react-router';
 import getPost from '../../actions/getPost';
 import deletePost from '../../actions/deletePost';
@@ -19,11 +19,11 @@ import {
 const CodePage = () => {
     const { id } = useParams();
 
-    const [post, setPost] = React.useState({});
-    const [loading, setLoading] = React.useState(true);
+    const [post, setPost] = useState({});
+    const [loading, setLoading] = useState(true);
     const tokenData = decodeToken(localStorage.getItem('token'));
 
-    React.useEffect(() => {
+    useEffect(() => {
         var load = true;
         getPost({
             id,

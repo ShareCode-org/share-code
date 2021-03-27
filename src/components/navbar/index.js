@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import NavbarAccount from '../navbar-account/index';
 import { UserContext } from '../../context/userContext';
 import { NavbarDiv, NavbarLogo, NavbarUl, NavbarLi, AccountContainer, NavbarA, LogoutA } from './style';
 
 const Navbar = () => {
-    const { isLogging, setIsLogging } = React.useContext(UserContext);
+    const { isLogging, setIsLogging } = useContext(UserContext);
 
     return (
         <NavbarDiv>

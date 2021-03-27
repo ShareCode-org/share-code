@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import signIn from '../../actions/signIn';
 import { Formik, Field } from "formik";
 import * as Yup from 'yup';
@@ -23,7 +23,7 @@ const SigninSchema = Yup.object().shape({
 });
 
 const SignIn = () => {
-    const { setIsLogging } = React.useContext(UserContext);
+    const { setIsLogging } = useContext(UserContext);
 
     return (
         <SignInDiv>

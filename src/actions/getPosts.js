@@ -1,6 +1,6 @@
 import API from '../api/api';
 
-const getPosts = ({ setPosts, setLoading, loading, load }) => {
+const getPosts = ({ setPosts, setLoading, load }) => {
     API.get('/post')
         .then(res => {
             if (load) {

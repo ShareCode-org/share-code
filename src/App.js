@@ -31,7 +31,7 @@ const App = () => {
         setIsLogging(JSON.parse(data));
 
         document.title = 'ShareCode';
-    }, [])
+    }, []);
 
     return (
         <div>
@@ -68,7 +68,5 @@ const App = () => {
         </div>
     )
 };
-
-
 
 export default App;

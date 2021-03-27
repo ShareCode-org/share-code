@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Prompt } from 'react-router';
 import getPost from '../../actions/getPost';
 import editPost from '../../actions/editPost';
@@ -6,9 +6,9 @@ import { EditPageDiv, EditPageBottom, EditInput, EditTextArea, EditButton, SaveB
 
 const EditPage = () => {
     const { id } = useParams();
-    const [post, setPost] = React.useState({});
+    const [post, setPost] = useState({});
 
-    React.useEffect(() => {
+    useEffect(() => {
         var load = false;
         getPost({
             id,

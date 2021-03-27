@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import addPost from '../../actions/addPost';
 import { Formik, FastField } from 'formik';
 import * as Yup from 'yup';
@@ -15,8 +15,8 @@ import {
 } from './style';
 
 const PostForm = () => {
-    const [IsOpen, setIsOpen] = React.useState(false);
-    const [IsDisablad, setIsDisablad] = React.useState(false);
+    const [IsOpen, setIsOpen] = useState(false);
+    const [IsDisablad, setIsDisablad] = useState(false);
     const tokenData = decodeToken(localStorage.getItem('token'));
 
     const AddPostSchema = Yup.object().shape({

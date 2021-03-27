@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { decodeToken } from "react-jwt";
 import { withStyles } from '@material-ui/core/styles';
 import { toast } from 'react-toastify';
@@ -45,7 +45,7 @@ const StyledMenuItem = withStyles(() => ({
 
 const NavbarAccount = ({ isLogging, setIsLogging }) => {
     const tokenData = decodeToken(localStorage.getItem('token'));
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
 
     const Logout = () => {
         setIsLogging(false);

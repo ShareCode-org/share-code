@@ -1,6 +1,6 @@
 import API from '../api/api';
 
-const getPost = ({ id, setPost, setLoading, loading, load }) => {
+const getPost = ({ id, setPost, setLoading, load }) => {
     API.get('post/' + id)
         .then(res => {
             if (load) {
@@ -12,7 +12,7 @@ const getPost = ({ id, setPost, setLoading, loading, load }) => {
                 setPost(res.data);
             }
         })
-        // .catch(() => window.location.href = `/404/post/${id}`)
+        .catch(() => window.location.href = `/404/post/${id}`)
 };
 
 export default getPost;
