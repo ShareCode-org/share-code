@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import addPost from '../../actions/addPost';
+import React, { useState, useContext } from 'react';
 import { Formik, FastField } from 'formik';
 import * as Yup from 'yup';
-import { decodeToken } from 'react-jwt';
+import UserContext from '../../context/UserContext';
+import addPost from '../../actions/addPost';
 import Modal from 'react-modal';
 import PostButton from '../post-button/index';
 import {
@@ -17,7 +17,7 @@ import {
 const PostForm = () => {
     const [IsOpen, setIsOpen] = useState(false);
     const [IsDisablad, setIsDisablad] = useState(false);
-    const tokenData = decodeToken(localStorage.getItem('token'));
+    const { user } = useContext(UserContext);
 
     const AddPostSchema = Yup.object().shape({
         title: Yup.string()
@@ -60,7 +60,7 @@ const PostForm = () => {
                             title: '',
                             description: '',
                             code: '',
-                            createdBy: { _id: tokenData.userId, username: tokenData.username },
+                            createdBy: { _id: user.userId, username: user.username },
                             recaptcha: ''
                         }}
                         validationSchema={AddPostSchema}

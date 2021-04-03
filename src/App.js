@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { isExpired } from 'react-jwt';
-import { UserContext } from './context/userContext';
+import { isExpired, decodeToken } from 'react-jwt';
+import isLoggingContext from './context/isLoggingContext';
+import UserContext from './context/UserContext';
 import Navbar from './components/navbar/index';
 import { ToastContainer } from 'react-toastify';
 import HomePage from './pages/home-page/index';
@@ -16,7 +17,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 const App = () => {
+    const [user, setUser] = useState(decodeToken(localStorage.getItem('token')));
     const [isLogging, setIsLogging] = useState(false);
+    const UserProvider = useMemo(() => ({ user, setUser }), [user, setUser]);
     const isLoggingProvider = useMemo(() => ({ isLogging, setIsLogging }), [isLogging, setIsLogging]);
     const isTokenExpired = isExpired(localStorage.getItem('token'));
 
@@ -27,6 +30,8 @@ const App = () => {
             setIsLogging(false);
         };
 
+        console.log(user)
+
         const data = localStorage.getItem('isLogging');
         setIsLogging(JSON.parse(data));
 
@@ -36,30 +41,32 @@ const App = () => {
     return (
         <div>
             <div className="App">
-                <UserContext.Provider value={isLoggingProvider}>
-                    <Navbar />
-                    <ToastContainer
-                        position="bottom-right"
-                        autoClose={1500}
-                    />
-                    <Switch>
-                        <Route exact path="/" component={HomePage} />
-                        <Route exact path="/leaderboard" component={LeaderboardPage} />
-                        <Route exact path="/post" component={PostPage} />
-                        <Route exact path={`/post/:id`} component={CodePage} />
-                        <Route exact path={`/post/:id/edit`} component={EditPage} />
-                        <Route exact path={`/profile/:id`} component={ProfilePage} />
-                        <Route exact path="/sign-up-and-sign-in">
-                            {
-                                isLogging ? (
-                                    <Redirect to="/" />
-                                ) : (
-                                    <SignUpAndSignIn />
-                                )
-                            }
-                        </Route>
-                        <Route component={NotFound} />
-                    </Switch>
+                <UserContext.Provider value={UserProvider}>
+                    <isLoggingContext.Provider value={isLoggingProvider}>
+                        <Navbar />
+                        <ToastContainer
+                            position="bottom-right"
+                            autoClose={1500}
+                        />
+                        <Switch>
+                            <Route exact path="/" component={HomePage} />
+                            <Route exact path="/leaderboard" component={LeaderboardPage} />
+                            <Route exact path="/post" component={PostPage} />
+                            <Route exact path={`/post/:id`} component={CodePage} />
+                            <Route exact path={`/post/:id/edit`} component={EditPage} />
+                            <Route exact path={`/profile/:id`} component={ProfilePage} />
+                            <Route exact path="/sign-up-and-sign-in">
+                                {
+                                    isLogging ? (
+                                        <Redirect to="/" />
+                                    ) : (
+                                        <SignUpAndSignIn />
+                                    )
+                                }
+                            </Route>
+                            <Route component={NotFound} />
+                        </Switch>
+                    </isLoggingContext.Provider>
                 </UserContext.Provider>
             </div>
             <h1 className="app-not-working">

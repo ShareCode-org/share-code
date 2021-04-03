@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { decodeToken } from "react-jwt";
+import React, { useState, useContext } from 'react';
+import UserContext from '../../context/UserContext';
 import { withStyles } from '@material-ui/core/styles';
 import { toast } from 'react-toastify';
 import IconButton from '@material-ui/core/IconButton';
@@ -44,7 +44,7 @@ const StyledMenuItem = withStyles(() => ({
 }))(MenuItem);
 
 const NavbarAccount = ({ isLogging, setIsLogging }) => {
-    const tokenData = decodeToken(localStorage.getItem('token'));
+    const { user } = useContext(UserContext);
     const [anchorEl, setAnchorEl] = useState(null);
 
     const Logout = () => {
@@ -83,7 +83,7 @@ const NavbarAccount = ({ isLogging, setIsLogging }) => {
                 {
                     isLogging ? (
                         <div>
-                            <StyledMenuItem onClick={() => window.location.href = `/profile/${tokenData.userId}`}>
+                            <StyledMenuItem onClick={() => window.location.href = `/profile/${user.userId}`}>
                                 <ListItemIcon>
                                     <SupervisorAccountIcon fontSize="small" />
                                 </ListItemIcon>

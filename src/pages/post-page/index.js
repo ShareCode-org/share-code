@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { UserContext } from '../../context/userContext';
-import { decodeToken } from "react-jwt";
+import isLoggingContext from '../../context/isLoggingContext';
+import UserContext from '../../context/UserContext';
 import getPosts from '../../actions/getPosts';
 import checkboxChange from '../../actions/checkboxChange';
 import Loader from '../../components/loader/index';
@@ -11,9 +11,9 @@ import { PostsDiv, PostMessage } from './style';
 
 const PostPage = () => {
     const LocalIsLogging = JSON.parse(localStorage.getItem('isLogging'));
+    const { user } = useContext(UserContext);
     const [posts, setPosts] = useState([]);
-    const { isLogging } = useContext(UserContext);
-    const tokenData = decodeToken(localStorage.getItem('token'));
+    const { isLogging } = useContext(isLoggingContext);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -26,7 +26,7 @@ const PostPage = () => {
         }
     }, []);
 
-    const SupGlobalFunc = (e) => checkboxChange({ e, getPosts, setPosts, posts, setLoading, loading, tokenData });
+    // const SupGlobalFunc = (e) => checkboxChange({ e, getPosts, setPosts, posts, setLoading, loading, tokenData });
 
     return (
         <div>

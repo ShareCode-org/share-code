@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams, Prompt } from 'react-router';
+import UserContext from '../../context/UserContext';
 import getPost from '../../actions/getPost';
 import deletePost from '../../actions/deletePost';
 import Loader from '../../components/loader/index';
 import PostMenu from '../../components/post-menu/index';
-import { decodeToken } from "react-jwt";
 import { androidstudio } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import {
     CodePageDiv,
@@ -21,7 +21,7 @@ const CodePage = () => {
 
     const [post, setPost] = useState({});
     const [loading, setLoading] = useState(true);
-    const tokenData = decodeToken(localStorage.getItem('token'));
+    const { user } = useContext(UserContext);
 
     useEffect(() => {
         var load = true;
@@ -48,7 +48,7 @@ const CodePage = () => {
                         <CodePageTop>
                             <CodePageTitle>{post.title}</CodePageTitle>
                             <PostMenu
-                                tokenData={tokenData}
+                                tokenData={user}
                                 post={post}
                                 deleteFunc={() => deletePost({ id })}
                             />
