@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { isExpired, decodeToken } from 'react-jwt';
 import isLoggingContext from './context/isLoggingContext';
-import UserContext from './context/UserContext.js';
+import UserContext from './context/UserContext';
 import Navbar from './components/navbar/index';
 import { ToastContainer } from 'react-toastify';
 import HomePage from './pages/home-page/index';
@@ -27,6 +27,7 @@ const App = () => {
         if (isTokenExpired) {
             localStorage.setItem('token', '');
             localStorage.setItem('isLogging', false);
+            setUser();
             setIsLogging(false);
         };
 
