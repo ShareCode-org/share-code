@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import API from '../../api/api';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams, Prompt } from 'react-router';
-import { decodeToken } from "react-jwt";
+import UserContext from '../../context/UserContext';
 import getUser from '../../actions/getUser';
 import followUser from '../../actions/followUser';
 import unFollowUser from '../../actions/unFollowUser';
@@ -33,31 +32,26 @@ const ProfilePage = () => {
         followersModal: false,
         followingModal: false
     });
-    const tokenData = decodeToken(localStorage.getItem('token'));
     const [loading, setLoading] = useState(true);
+    const { user } = useContext(UserContext);
     const [isFollowing, setIsFollowing] = useState();
     const [isEditing, setIsEditing] = useState(false);
-    const [user, setUser] = useState({});
-    const [me, setMe] = useState({});
+    const [profile, setProfile] = useState({});
 
     useEffect(() => {
         let load = true;
-        getUser({ id, setUser, load, setLoading, loading })
-        API.get(`/user/${tokenData.userId}`)
-            .then(res => setMe(res.data))
-            .catch(err => err)
+        getUser({ id, setProfile, load, setLoading })
     }, []);
 
     useEffect(() => {
         let followers = user.followers || [];
         followers.forEach(element => {
-            if (element._id === tokenData.userId, element.username === tokenData.username)
+            if (element._id === user.userId, element.username === user.username)
                 setIsFollowing(true);
             else
                 setIsFollowing(false);
         });
-        console.log(user)
-    }, [user]);
+    }, [profile]);
 
     return (
         <div>
@@ -72,8 +66,8 @@ const ProfilePage = () => {
                     <ProfileModale
                         Content={
                             <div>
-                                {user.posts.length ? (
-                                    user.posts.map((post, index) => (
+                                {profile.posts.length ? (
+                                    profile.posts.map((post, index) => (
                                         <CodeCard
                                             key={index}
                                             title={post.title}
@@ -92,14 +86,14 @@ const ProfilePage = () => {
                     <ProfileModale
                         Content={
                             <div>
-                                {user.followers.length ? (
-                                    user.followers.map((user, index) => (
+                                {profile.followers.length ? (
+                                    profile.followers.map((user, index) => (
                                         <ProfilesDiv key={index}>
                                             <ProfilePicture src={AccountSvg} />
                                             <div>
                                                 <h1
                                                     style={{ marginLeft: '10px', cursor: 'pointer' }}
-                                                    onClick={() => window.location.href = `/profile/${user._id}`}
+                                                    onClick={() => window.location.href = `/profile/${user.username}`}
                                                 >
                                                     {user.username}
                                                 </h1>
@@ -117,14 +111,14 @@ const ProfilePage = () => {
                     <ProfileModale
                         Content={
                             <div>
-                                {user.following.length ? (
-                                    user.following.map((user, index) => (
+                                {profile.following.length ? (
+                                    profile.following.map((user, index) => (
                                         <ProfilesDiv key={index}>
                                             <ProfilePicture src={AccountSvg} />
                                             <div>
                                                 <h1
                                                     style={{ marginLeft: '10px', cursor: 'pointer' }}
-                                                    onClick={() => window.location.href = `/profile/${user._id}`}
+                                                    onClick={() => window.location.href = `/profile/${user.username}`}
                                                 >
                                                     {user.username}
                                                 </h1>
@@ -144,35 +138,35 @@ const ProfilePage = () => {
                             <ProfilePicture src={AccountSvg} />
                         </div>
                         <div>
-                            <ProfileUsername>{user.username}</ProfileUsername>
-                            <ProfileSpan>{user.role || "Member"}</ProfileSpan>
+                            <ProfileUsername>{profile.username}</ProfileUsername>
+                            <ProfileSpan>{profile.role || "Member"}</ProfileSpan>
                             <ProfileStatsDiv>
-                                <ProfileSpan onClick={() => setModals({ ...modals, postsModal: true })}>{user.posts.length} posts</ProfileSpan>
-                                <ProfileSpan onClick={() => setModals({ ...modals, followersModal: true })}>{user.followers.length} followers</ProfileSpan>
-                                <ProfileSpan onClick={() => setModals({ ...modals, followingModal: true })}>{user.following.length} following</ProfileSpan>
+                                <ProfileSpan onClick={() => setModals({ ...modals, postsModal: true })}>{profile.posts.length || 0} posts</ProfileSpan>
+                                <ProfileSpan onClick={() => setModals({ ...modals, followersModal: true })}>{profile.followers.length || 0} followers</ProfileSpan>
+                                <ProfileSpan onClick={() => setModals({ ...modals, followingModal: true })}>{profile.following.length || 0} following</ProfileSpan>
                             </ProfileStatsDiv>
                             {isEditing ? ''
                                 : (
                                     <ProfileBio>
-                                        {user.bio || "The bio is empty."}
+                                        {profile.bio || "The bio is empty."}
                                     </ProfileBio>
                                 )
                             }
                             {
-                                tokenData === null ?
+                                user === null ?
                                     '' : (
-                                        tokenData.username === user.username ? (
+                                        user.username === profile.username ? (
                                             isEditing ? (
                                                 <div>
                                                     <ProfileBioInput
                                                         placeholder='The bio is empty.'
                                                         maxlength='32'
-                                                        value={user.bio}
-                                                        onChange={(e) => setUser({ ...user, bio: e.target.value })}
+                                                        value={profile.bio}
+                                                        onChange={(e) => setProfile({ ...profile, bio: e.target.value })}
                                                     />
                                                     <div>
                                                         <ProfileButton onClick={() => window.location.href = window.location.href}>Cancel</ProfileButton>
-                                                        <SaveButton onClick={() => editBio({ id, user })}>Save</SaveButton>
+                                                        <SaveButton onClick={() => editBio({ id, profile })}>Save</SaveButton>
                                                     </div>
                                                 </div>
                                             ) : (
@@ -182,13 +176,13 @@ const ProfilePage = () => {
                                             <div>
                                                 {isFollowing ? (
                                                     <ProfileButton
-                                                        onClick={() => unFollowUser({ id, user, me, setUser, setIsFollowing, getUser })}
+                                                        onClick={() => unFollowUser({ id, profile, user, setProfile, setIsFollowing, getUser })}
                                                     >
                                                         Unfollow
                                                     </ProfileButton>
                                                 ) : (
                                                     <ProfileButton
-                                                        onClick={() => followUser({ id, user, me, setUser, setIsFollowing, getUser })}
+                                                        onClick={() => followUser({ id, profile, user, setProfile, setIsFollowing, getUser })}
                                                     >
                                                         Follow
                                                     </ProfileButton>

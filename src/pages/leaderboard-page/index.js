@@ -56,7 +56,6 @@ const LeaderboardPage = () => {
                             {listOfUsers.map((user, index) => (
                                 <LeaderboardItem
                                     key={index}
-                                    id={user.id}
                                     Number={index}
                                     Username={user.username}
                                     postsNumber={user.posts.length}

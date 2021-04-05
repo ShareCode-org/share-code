@@ -1,17 +1,18 @@
 import API from '../api/api';
 
-const followUser = ({ id, user, me, setUser, setIsFollowing, getUser }) => {
-    API.patch(`user/${me._id}`, [
-        { "propName": "following", "value": [...me.following, { _id: user._id, username: user.username }] }
-    ])
-    API.patch(`user/${id}`, [
-        { "propName": "followers", "value": [...user.followers, { _id: me._id, username: me.username }] }
-    ])
-        .then(() => {
-            let load = false;
-            getUser({ id, setUser, load });
-            setIsFollowing(true);
-        })
+const followUser = ({ id, profile, user, setProfile, setIsFollowing, getUser }) => {
+    alert('Not working yet :(')
+    // API.patch(`user/${me._id}`, [
+    //     { "propName": "following", "value": [...me.following, { _id: profile._id, username: profile.username }] }
+    // ])
+    // API.patch(`user/${id}`, [
+    //     { "propName": "followers", "value": [...user.followers, { _id: user.userId, username: user.username }] }
+    // ])
+    //     .then(() => {
+    //         let load = false;
+    //         getUser({ id, setProfile, load });
+    //         setIsFollowing(true);
+    //     })
 };
 
 export default followUser;

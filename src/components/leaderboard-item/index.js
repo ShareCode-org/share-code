@@ -1,9 +1,9 @@
 import React from 'react';
 
-const LeaderboardItem = ({ id, Number, Username, postsNumber, followersNumber }) => (
+const LeaderboardItem = ({ Number, Username, postsNumber, followersNumber }) => (
     <tr>
         <td>{Number}#</td>
-        <td onClick={() => window.location.href = `/profile/${id}`}>
+        <td onClick={() => window.location.href = `/profile/${Username}`}>
             <span style={{ cursor: 'pointer' }}>{Username}</span>
         </td>
         <td>{postsNumber}</td>

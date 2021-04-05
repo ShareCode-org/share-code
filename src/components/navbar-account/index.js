@@ -83,7 +83,7 @@ const NavbarAccount = ({ isLogging, setIsLogging }) => {
                 {
                     isLogging ? (
                         <div>
-                            <StyledMenuItem onClick={() => window.location.href = `/profile/${user.userId}`}>
+                            <StyledMenuItem onClick={() => window.location.href = `/profile/${user.username}`}>
                                 <ListItemIcon>
                                     <SupervisorAccountIcon fontSize="small" />
                                 </ListItemIcon>
@@ -97,13 +97,13 @@ const NavbarAccount = ({ isLogging, setIsLogging }) => {
                             </StyledMenuItem>
                         </div>
                     ) : (
-                            <StyledMenuItem onClick={() => window.location.href = '/sign-up-and-sign-in'}>
-                                <ListItemIcon>
-                                    <VpnKeyIcon fontSize="small" />
-                                </ListItemIcon>
-                                <ListItemText primary="Sign in" />
-                            </StyledMenuItem>
-                        )
+                        <StyledMenuItem onClick={() => window.location.href = '/sign-up-and-sign-in'}>
+                            <ListItemIcon>
+                                <VpnKeyIcon fontSize="small" />
+                            </ListItemIcon>
+                            <ListItemText primary="Sign in" />
+                        </StyledMenuItem>
+                    )
                 }
             </StyledMenu>
         </div>

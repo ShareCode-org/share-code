@@ -1,6 +1,7 @@
 import API from '../api/api';
 
-const unFollowUser = ({ id, user, me, setUser, setIsFollowing, getUser }) => {
+const unFollowUser = ({ id, profile, user, setProfile, setIsFollowing, getUser }) => {
+    alert('Not working yet :(')
     // const followerIndex = user.followers.indexOf({ _id: me._id, username: me.username });
     // const followingIndex = me.following.indexOf({ _id: user._id, username: user.username });
 
