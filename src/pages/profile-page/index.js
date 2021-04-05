@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams, Prompt } from 'react-router';
-import UserContext from '../../context/UserContext';
+import UserContext from '../../context/userContext';
 import getUser from '../../actions/getUser';
 import followUser from '../../actions/followUser';
 import unFollowUser from '../../actions/unFollowUser';

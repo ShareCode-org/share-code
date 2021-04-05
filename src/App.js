@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { isExpired, decodeToken } from 'react-jwt';
 import isLoggingContext from './context/isLoggingContext';
-import UserContext from './context/UserContext';
+import UserContext from './context/userContext';
 import Navbar from './components/navbar/index';
 import { ToastContainer } from 'react-toastify';
 import HomePage from './pages/home-page/index';

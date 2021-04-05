@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams, Prompt } from 'react-router';
-import UserContext from '../../context/UserContext';
+import UserContext from '../../context/userContext';
 import getPost from '../../actions/getPost';
 import deletePost from '../../actions/deletePost';
 import Loader from '../../components/loader/index';

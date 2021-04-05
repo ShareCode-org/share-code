@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import isLoggingContext from '../../context/isLoggingContext';
-import UserContext from '../../context/UserContext';
+import UserContext from '../../context/userContext';
 import getPosts from '../../actions/getPosts';
 import checkboxChange from '../../actions/checkboxChange';
 import Loader from '../../components/loader/index';

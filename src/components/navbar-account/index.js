@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import UserContext from '../../context/UserContext';
+import UserContext from '../../context/userContext';
 import { withStyles } from '@material-ui/core/styles';
 import { toast } from 'react-toastify';
 import IconButton from '@material-ui/core/IconButton';

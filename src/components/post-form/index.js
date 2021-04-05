@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Formik, FastField } from 'formik';
 import * as Yup from 'yup';
-import UserContext from '../../context/UserContext';
+import UserContext from '../../context/userContext';
 import addPost from '../../actions/addPost';
 import Modal from 'react-modal';
 import PostButton from '../post-button/index';
