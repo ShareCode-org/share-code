@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import UserContext from '../../context/userContext';
 import { withStyles } from '@material-ui/core/styles';
 import { toast } from 'react-toastify';
+import signOut from '../../actions/signOut';
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -47,14 +48,6 @@ const NavbarAccount = ({ isLogging, setIsLogging }) => {
     const { user } = useContext(UserContext);
     const [anchorEl, setAnchorEl] = useState(null);
 
-    const Logout = () => {
-        setIsLogging(false);
-        localStorage.setItem('token', '');
-        localStorage.setItem('isLogging', false);
-        toast.success('Logout Successful!');
-        setAnchorEl(null);
-    };
-
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -89,11 +82,11 @@ const NavbarAccount = ({ isLogging, setIsLogging }) => {
                                 </ListItemIcon>
                                 <ListItemText primary="Profile" />
                             </StyledMenuItem>
-                            <StyledMenuItem onClick={() => Logout()}>
+                            <StyledMenuItem onClick={() => signOut({ setIsLogging, setAnchorEl, toast })}>
                                 <ListItemIcon>
                                     <ExitToAppIcon fontSize="small" />
                                 </ListItemIcon>
-                                <ListItemText primary="Logout" />
+                                <ListItemText primary="Sign out" />
                             </StyledMenuItem>
                         </div>
                     ) : (
