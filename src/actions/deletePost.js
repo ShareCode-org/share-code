@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 const DeletePost = ({ id }) => {
     const Confirm = window.confirm("Are you sure you want to delete your post ?");
 
-    if (Confirm == true) {
+    if (Confirm === true) {
         API.delete(`post/${id}`)
         .then(() => {
             toast.success('Post Deleted!');

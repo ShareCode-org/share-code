@@ -7,7 +7,7 @@ import { LeaderboardDivContainner, LeaderboardMessage } from './style';
 const LeaderboardPage = () => {
     const LocalIsLogging = JSON.parse(localStorage.getItem('isLogging'));
     const [users, setUsers] = useState([]);
-    const [listOfUsers, setListOfUsers] = useState([]);
+    const [listOfUsers] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -35,7 +35,7 @@ const LeaderboardPage = () => {
 
                 return ResultB - ResultA;
             });
-            
+
         } else {
             setLoading(false);
         }

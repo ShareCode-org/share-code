@@ -1,4 +1,4 @@
-import API from '../api/api';
+// import API from '../api/api';
 
 const unFollowUser = ({ id, profile, user, setProfile, setIsFollowing, getUser }) => {
     alert('Not working yet :(')

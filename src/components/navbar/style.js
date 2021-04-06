@@ -36,8 +36,6 @@ export const NavbarUl = styled.ul`
 
 export const NavbarA = styled(NavLink)`${linkStyle}`;
 
-export const LogoutA = styled(Link)`${linkStyle}`;
-
 export const NavbarLi = styled.li`
     ${LiStyle}
     padding: 10px 30px;

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import NavbarAccount from '../navbar-account/index';
 import isLoggingContext from '../../context/isLoggingContext';
-import { NavbarDiv, NavbarLogo, NavbarUl, NavbarLi, AccountContainer, NavbarA, LogoutA } from './style';
+import { NavbarDiv, NavbarLogo, NavbarUl, NavbarLi, AccountContainer, NavbarA } from './style';
 
 const Navbar = () => {
     const { isLogging, setIsLogging } = useContext(isLoggingContext);
