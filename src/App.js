@@ -31,8 +31,6 @@ const App = () => {
             setIsLogging(false);
         };
 
-        console.log(user)
-
         const data = localStorage.getItem('isLogging');
         setIsLogging(JSON.parse(data));
 
