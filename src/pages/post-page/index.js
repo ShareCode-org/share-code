@@ -24,6 +24,8 @@ const PostPage = () => {
         } else {
             setLoading(false);
         }
+
+        document.title = 'ShareCode | Post'
     }, []);
 
     // const SupGlobalFunc = (e) => checkboxChange({ e, getPosts, setPosts, posts, setLoading, loading, tokenData });

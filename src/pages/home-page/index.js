@@ -20,7 +20,10 @@ import {
 
 const HomePage = () => {
     const [loading, setLoading] = useState(true);
-    useEffect(() => setTimeout(() => setLoading(false), 500), []);
+    useEffect(() => {
+        document.title = 'ShareCode';
+        setTimeout(() => setLoading(false), 500)
+    }, []);
 
     return (
         <div>

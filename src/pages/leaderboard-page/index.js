@@ -16,6 +16,8 @@ const LeaderboardPage = () => {
         } else {
             setLoading(false);
         }
+
+        document.title = 'ShareCode | Leaderboard'
     }, []);
 
     useEffect(() => {
